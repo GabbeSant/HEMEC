@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Hemec | Manutenção Preventiva</title>
+
+  <link rel="stylesheet" href="../css/manutencao-preventiva.css" />
+
+  <link
+    rel="shortcut icon"
+    href="../Images/favicon.ico"
+    type="image/x-icon"
+  />
+</head>
+
+<body>
+
+  <!-- MENU LATERAL -->
+
+  <aside class="sidebar">
+
+    <img
+      src="../Images/logo.png"
+      class="logo"
+      alt="logo"
+    />
+
+    <hr />
+
+
+    <!-- MENU PRINCIPAL -->
+
+    <nav class="menu-section">
+
+      <span>PRINCIPAL</span>
+
+      <a
+        href="dashboard.html"
+        class="nav-dashboard"
+      >
+        <img
+          src="../Images/icone-1.png"
+          alt="ICONE DASHBOARD"
+        />
+        <span>Dashboard</span>
+      </a>
+
+      <a
+        href="equipamentos.html"
+        class="nav-equipamentos"
+      >
+        <img
+          src="../Images/icone-2.png"
+          alt="ICONE EQUIPAMENTOS"
+        />
+        <span>Equipamentos</span>
+      </a>
+
+    </nav>
+
+
+    <!-- MENU MANUTENÇÃO -->
+
+    <nav class="menu-section">
+
+      <span>MANUTENÇÃO</span>
+
+      <a
+        href="ordens-servico.html"
+        class="nav-ordens-servico"
+      >
+        <img
+          src="../Images/icone-3.png"
+          alt="ICONE ORDENS DE SERVIÇO"
+        />
+        <span>Ordens de Serviço</span>
+      </a>
+
+      <a
+        href="#"
+        class="nav-manut-prev"
+      >
+        <img
+          src="../Images/icone-4.png"
+          alt="ICONE MANUTENÇÃO PREVENTIVA"
+        />
+        <span>Manutenção Preventiva</span>
+      </a>
+
+    </nav>
+
+
+    <!-- USUÁRIO -->
+
+    <div class="sidebar-footer">
+
+      <a
+        href="perfil.html"
+        class="nav-perfil"
+      >
+
+        <div class="avatar">
+
+          <img
+            src="../Images/icone-5.png"
+            alt="Avatar"
+          />
+
+          <span class="nome-paciente">
+            Rafaela Lima
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- SAÍDA DA DEMO -->
+
+      <a
+        href="../index.html"
+        class="bt-navegacao"
+        title="Sair"
+      >
+
+        <img
+          src="../Images/icone-6.png"
+          alt="IMAGEM DE SAIR"
+        />
+
+      </a>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- CONTEÚDO PRINCIPAL -->
+
+  <div class="conteudo-principal">
+
+
+    <!-- TOPO -->
+
+    <div class="main-top">
+
+      <span>
+        Manutenção Preventiva
+      </span>
+
+      <a
+        href="equipamentos.html"
+        class="bt-novo-equipamento"
+      >
+        Voltar
+      </a>
+
+    </div>
+
+
+
+    <!-- FORMULÁRIO -->
+
+    <form
+      class="conteiner-manutencao"
+      id="form-preventiva"
+    >
+
+
+      <!-- INFORMAÇÕES DA OS -->
+
+      <div
+        class="info-os"
+        id="info-os"
+      >
+
+        <span class="os-badge">
+          #OS-2026-090
+        </span>
+
+        <span>
+          Monitor Multiparamétrico MX-500
+        </span>
+
+      </div>
+
+
+
+      <!-- TÉCNICO E DATA -->
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label>
+            TÉCNICO RESPONSÁVEL
+          </label>
+
+          <select
+            id="responsavel"
+            class="select-custom"
+            required
+          >
+
+            <option value="">
+              Selecione o técnico
+            </option>
+
+            <option value="carlos">
+              Carlos Henrique
+            </option>
+
+            <option value="marcos">
+              Marcos Oliveira
+            </option>
+
+            <option value="joao">
+              João Pereira
+            </option>
+
+            <option value="fernanda">
+              Fernanda Souza
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            DATA DE EXECUÇÃO
+          </label>
+
+          <input
+            type="date"
+            id="data-execucao"
+            class="select-custom"
+            required
+          />
+
+        </div>
+
+      </div>
+
+
+
+      <!-- SUBSTITUIÇÃO DE PEÇAS -->
+
+      <div class="form-group">
+
+        <label>
+          HOUVE SUBSTITUIÇÃO DE PEÇAS?
+        </label>
+
+
+        <div class="radio-group">
+
+          <label>
+            <input
+              type="radio"
+              name="substituicao"
+              value="sim"
+            />
+            Sim
+          </label>
+
+
+          <label>
+            <input
+              type="radio"
+              name="substituicao"
+              value="nao"
+              checked
+            />
+            Não
+          </label>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- PEÇAS -->
+
+      <div
+        class="form-group"
+        id="secao-pecas"
+        style="display:none"
+      >
+
+        <label>
+          PEÇAS SUBSTITUÍDAS
+        </label>
+
+
+        <div id="lista-pecas"></div>
+
+
+        <button
+          type="button"
+          class="btn-add-peca"
+          id="btn-add-peca"
+        >
+          + Adicionar Peça
+        </button>
+
+      </div>
+
+
+
+      <!-- CHECKLIST -->
+
+      <div class="form-group">
+
+        <label>
+          CHECKLIST DE VERIFICAÇÃO
+        </label>
+
+
+        <div
+          id="checklist-itens"
+          class="checklist-container"
+        >
+
+          <label>
+            <input
+              type="checkbox"
+              name="checklist"
+            />
+            Inspeção visual do equipamento
+          </label>
+
+
+          <label>
+            <input
+              type="checkbox"
+              name="checklist"
+            />
+            Verificação das conexões elétricas
+          </label>
+
+
+          <label>
+            <input
+              type="checkbox"
+              name="checklist"
+            />
+            Teste de funcionamento
+          </label>
+
+
+          <label>
+            <input
+              type="checkbox"
+              name="checklist"
+            />
+            Verificação dos componentes
+          </label>
+
+
+          <label>
+            <input
+              type="checkbox"
+              name="checklist"
+            />
+            Limpeza e higienização
+          </label>
+
+
+          <label>
+            <input
+              type="checkbox"
+              name="checklist"
+            />
+            Equipamento liberado para utilização
+          </label>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- AÇÕES -->
+
+      <div class="form-actions">
+
+        <button
+          type="submit"
+          class="btn-registrar"
+        >
+          Registrar Manutenção
+        </button>
+
+
+        <a
+          href="ordens-servico.html"
+          class="btn-cancelar"
+        >
+          Cancelar
+        </a>
+
+      </div>
+
+
+      <!-- MENSAGEM DA DEMO -->
+
+      <div
+        id="mensagem-demo"
+        style="
+          display:none;
+          margin-top:20px;
+          padding:14px;
+          border-radius:8px;
+          text-align:center;
+          font-size:14px;
+        "
+      ></div>
+
+    </form>
+
+  </div>
+
+
+
+  <!--
+    DEMO ESTÁTICA
+
+    Nenhum backend é utilizado.
+
+    Os dados da OS, equipamento, técnicos
+    e checklist são simulados localmente.
+  -->
+
+  <script>
+
+    /*
+     * DATA DE EXECUÇÃO
+     *
+     * Coloca automaticamente a data atual.
+     */
+
+    const campoData =
+      document.getElementById("data-execucao");
+
+    const hoje =
+      new Date();
+
+    const ano =
+      hoje.getFullYear();
+
+    const mes =
+      String(
+        hoje.getMonth() + 1
+      ).padStart(2, "0");
+
+    const dia =
+      String(
+        hoje.getDate()
+      ).padStart(2, "0");
+
+    campoData.value =
+      `${ano}-${mes}-${dia}`;
+
+
+
+    /*
+     * SEÇÃO DE PEÇAS
+     */
+
+    const radios =
+      document.querySelectorAll(
+        'input[name="substituicao"]'
+      );
+
+    const secaoPecas =
+      document.getElementById(
+        "secao-pecas"
+      );
+
+
+    radios.forEach(
+      function (radio) {
+
+        radio.addEventListener(
+          "change",
+          function () {
+
+            if (
+              this.value === "sim"
+            ) {
+
+              secaoPecas.style.display =
+                "block";
+
+            } else {
+
+              secaoPecas.style.display =
+                "none";
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /*
+     * ADICIONAR PEÇAS
+     */
+
+    const botaoAdicionar =
+      document.getElementById(
+        "btn-add-peca"
+      );
+
+    const listaPecas =
+      document.getElementById(
+        "lista-pecas"
+      );
+
+    let contadorPecas = 0;
+
+
+    botaoAdicionar.addEventListener(
+      "click",
+      function () {
+
+        contadorPecas++;
+
+
+        const item =
+          document.createElement(
+            "div"
+          );
+
+
+        item.className =
+          "peca-item";
+
+
+        item.style.display =
+          "flex";
+
+        item.style.gap =
+          "10px";
+
+        item.style.marginBottom =
+          "10px";
+
+
+        item.innerHTML = `
+
+          <input
+            type="text"
+            placeholder="Nome da peça substituída"
+            name="peca-${contadorPecas}"
+            style="flex:1;"
+          >
+
+          <button
+            type="button"
+            class="btn-remover-peca"
+            style="
+              padding:8px 12px;
+              cursor:pointer;
+            "
+          >
+            Remover
+          </button>
+
+        `;
+
+
+        item
+          .querySelector(
+            ".btn-remover-peca"
+          )
+          .addEventListener(
+            "click",
+            function () {
+
+              item.remove();
+
+            }
+          );
+
+
+        listaPecas.appendChild(
+          item
+        );
+
+      }
+    );
+
+
+
+    /*
+     * REGISTRO DA MANUTENÇÃO
+     *
+     * Apenas simulação.
+     */
+
+    const formulario =
+      document.getElementById(
+        "form-preventiva"
+      );
+
+    const mensagem =
+      document.getElementById(
+        "mensagem-demo"
+      );
+
+
+    formulario.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+
+        const checklist =
+          document.querySelectorAll(
+            'input[name="checklist"]:checked'
+          );
+
+
+        if (
+          checklist.length === 0
+        ) {
+
+          mensagem.style.display =
+            "block";
+
+          mensagem.style.background =
+            "#fef3c7";
+
+          mensagem.style.color =
+            "#92400e";
+
+          mensagem.textContent =
+            "Selecione pelo menos um item do checklist.";
+
+          return;
+
+        }
+
+
+        mensagem.style.display =
+          "block";
+
+        mensagem.style.background =
+          "#dcfce7";
+
+        mensagem.style.color =
+          "#166534";
+
+        mensagem.textContent =
+          "Manutenção preventiva registrada com sucesso!";
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>

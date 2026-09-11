@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Hemec | Manutenção Corretiva
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/manutencao-corretiva.css"
+    >
+
+    <link
+        rel="shortcut icon"
+        href="../Images/favicon.ico"
+        type="image/x-icon"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- MENU LATERAL -->
+
+    <aside class="sidebar">
+
+
+        <img
+            src="../Images/logo.png"
+            class="logo"
+            alt="logo"
+        >
+
+        <hr>
+
+
+        <!-- MENU PRINCIPAL -->
+
+        <nav class="menu-section">
+
+            <span>
+                PRINCIPAL
+            </span>
+
+
+            <a
+                href="dashboard.html"
+                class="nav-dashboard"
+            >
+
+                <img
+                    src="../Images/icone-1.png"
+                    alt="ICONE DASHBOARD"
+                >
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="equipamentos.html"
+                class="nav-equipamentos"
+            >
+
+                <img
+                    src="../Images/icone-2.png"
+                    alt="ICONE EQUIPAMENTOS"
+                >
+
+                <span>
+                    Equipamentos
+                </span>
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- MENU MANUTENÇÃO -->
+
+        <nav class="menu-section">
+
+            <span>
+                MANUTENÇÃO
+            </span>
+
+
+            <a
+                href="ordens-servico.html"
+                class="nav-ordens-servico"
+            >
+
+                <img
+                    src="../Images/icone-3.png"
+                    alt="ICONE ORDENS DE SERVIÇO"
+                >
+
+                <span>
+                    Ordens de Serviço
+                </span>
+
+            </a>
+
+
+            <a
+                href="manutencao-preventiva.html"
+                class="nav-manut-prev"
+            >
+
+                <img
+                    src="../Images/icone-4.png"
+                    alt="ICONE MANUTENÇÃO PREVENTIVA"
+                >
+
+                <span>
+                    Manutenção Preventiva
+                </span>
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- USUÁRIO -->
+
+        <div class="sidebar-footer">
+
+
+            <a
+                href="perfil.html"
+                class="nav-perfil"
+            >
+
+                <div class="avatar">
+
+                    <img
+                        src="../Images/icone-5.png"
+                        alt="Avatar"
+                    >
+
+                    <span class="nome-paciente">
+                        Rafaela Lima
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- Logout da demonstração -->
+
+            <a
+                href="../index.html"
+                class="bt-navegacao"
+                title="Sair"
+            >
+
+                <img
+                    src="../Images/icone-6.png"
+                    alt="IMAGEM DE SAIR"
+                >
+
+            </a>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <div class="conteudo-principal">
+
+
+        <!-- TOPO -->
+
+        <div class="main-top">
+
+            <span>
+                Manutenção Corretiva
+            </span>
+
+
+            <a
+                href="ordens-servico.html"
+                class="bt-novo-equipamento"
+            >
+                Voltar
+            </a>
+
+        </div>
+
+
+
+        <!-- FORMULÁRIO -->
+
+        <form
+            class="conteiner-manutencao"
+            id="form-corretiva"
+        >
+
+
+            <!-- INFORMAÇÕES DA OS -->
+
+            <div class="info-os">
+
+                <span class="os-badge">
+                    #OS-2026-089
+                </span>
+
+
+                <span>
+                    Ventilador Mecânico VX-3000
+                </span>
+
+            </div>
+
+
+
+            <!-- TÉCNICO -->
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>
+                        TÉCNICO RESPONSÁVEL
+                    </label>
+
+
+                    <select
+                        id="responsavel"
+                        class="select-custom"
+                        required
+                    >
+
+                        <option value="">
+                            Selecione o técnico
+                        </option>
+
+                        <option value="carlos">
+                            Carlos Henrique
+                        </option>
+
+                        <option value="marcos">
+                            Marcos Oliveira
+                        </option>
+
+                        <option value="joao">
+                            João Pereira
+                        </option>
+
+                        <option value="fernanda">
+                            Fernanda Souza
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DESCRIÇÃO DO REPARO -->
+
+            <div class="form-group">
+
+                <label>
+                    DESCRIÇÃO DO REPARO REALIZADO
+                </label>
+
+
+                <textarea
+                    id="descricao-reparo"
+                    class="textarea-problema"
+                    placeholder="Descreva os serviços realizados"
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- TESTES FINAIS -->
+
+            <div class="form-group">
+
+                <label>
+                    TESTES FINAIS
+                </label>
+
+
+                <textarea
+                    id="testes-finais"
+                    class="textarea-problema"
+                    placeholder="Descreva os testes realizados após o reparo"
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- STATUS -->
+
+            <div class="form-group">
+
+                <label>
+                    STATUS DO EQUIPAMENTO APÓS REPARO
+                </label>
+
+
+                <select
+                    id="status-resultante"
+                    class="select-custom"
+                    required
+                >
+
+                    <option value="em_funcionamento">
+                        Em funcionamento
+                    </option>
+
+                    <option value="aguardando_reparo">
+                        Aguardando reparo adicional
+                    </option>
+
+                    <option value="fora_de_operacao">
+                        Fora de operação
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- PEÇAS -->
+
+            <div class="form-group">
+
+                <label>
+                    PEÇAS SUBSTITUÍDAS (opcional)
+                </label>
+
+
+                <div id="lista-pecas"></div>
+
+
+                <button
+                    type="button"
+                    class="btn-add-peca"
+                    id="btn-add-peca"
+                >
+                    + Adicionar Peça
+                </button>
+
+            </div>
+
+
+
+            <!-- AÇÕES -->
+
+            <div class="form-actions">
+
+
+                <button
+                    type="submit"
+                    class="btn-registrar"
+                >
+                    Registrar Manutenção
+                </button>
+
+
+                <a
+                    href="ordens-servico.html"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </a>
+
+
+            </div>
+
+
+            <!-- MENSAGEM DA DEMO -->
+
+            <div
+                id="mensagem-demo"
+                style="
+                    display:none;
+                    margin-top:20px;
+                    padding:14px;
+                    border-radius:8px;
+                    text-align:center;
+                    font-size:14px;
+                "
+            ></div>
+
+
+        </form>
+
+
+    </div>
+
+
+
+    <!--
+        DEMO ESTÁTICA
+
+        Não existe API, backend ou banco de dados.
+
+        Os dados da OS, equipamento e técnicos são
+        definidos diretamente nesta página.
+
+        A adição de peças e o envio do formulário
+        funcionam apenas localmente no navegador.
+    -->
+
+
+    <script>
+
+        const listaPecas =
+            document.getElementById("lista-pecas");
+
+        const botaoAdicionar =
+            document.getElementById("btn-add-peca");
+
+        const formulario =
+            document.getElementById("form-corretiva");
+
+        const mensagem =
+            document.getElementById("mensagem-demo");
+
+
+        let contadorPecas = 0;
+
+
+
+        /*
+         * ADICIONAR PEÇA
+         */
+
+        botaoAdicionar.addEventListener(
+            "click",
+            function () {
+
+                contadorPecas++;
+
+
+                const container =
+                    document.createElement("div");
+
+                container.className =
+                    "peca-item";
+
+
+                container.style.display =
+                    "flex";
+
+                container.style.gap =
+                    "10px";
+
+                container.style.marginBottom =
+                    "10px";
+
+
+                container.innerHTML = `
+
+                    <input
+                        type="text"
+                        name="peca-${contadorPecas}"
+                        placeholder="Nome da peça substituída"
+                        style="flex:1;"
+                    >
+
+                    <button
+                        type="button"
+                        class="btn-remover-peca"
+                        style="
+                            padding:8px 12px;
+                            cursor:pointer;
+                        "
+                    >
+                        Remover
+                    </button>
+
+                `;
+
+
+                const botaoRemover =
+                    container.querySelector(
+                        ".btn-remover-peca"
+                    );
+
+
+                botaoRemover.addEventListener(
+                    "click",
+                    function () {
+
+                        container.remove();
+
+                    }
+                );
+
+
+                listaPecas.appendChild(
+                    container
+                );
+
+            }
+        );
+
+
+
+        /*
+         * REGISTRO DA MANUTENÇÃO
+         *
+         * Apenas simulação visual.
+         */
+
+        formulario.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                mensagem.style.display =
+                    "block";
+
+
+                mensagem.style.background =
+                    "#dcfce7";
+
+
+                mensagem.style.color =
+                    "#166534";
+
+
+                mensagem.textContent =
+                    "Manutenção registrada com sucesso!";
+
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

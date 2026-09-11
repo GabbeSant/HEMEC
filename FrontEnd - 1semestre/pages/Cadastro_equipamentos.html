@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hemec | Cadastro de Equipamento</title>
+
+    <link rel="stylesheet" href="../css/Cadastro_equipamentos.css">
+    <link rel="shortcut icon" href="../Images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+
+        <img src="../Images/logo.png" class="logo" alt="logo">
+
+        <hr>
+
+        <nav class="menu-section">
+
+            <span>PRINCIPAL</span>
+
+            <a href="dashboard.html">
+                <img src="../Images/icone-1.png" alt="ICONE DASHBOARD">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="equipamentos.html" class="nav-equipamentos">
+                <img src="../Images/icone-2.png" alt="ICONE EQUIPAMENTOS">
+                <span>Equipamentos</span>
+            </a>
+
+        </nav>
+
+
+        <nav class="menu-section">
+
+            <span>MANUTENÇÃO</span>
+
+            <a href="ordens-servico.html">
+                <img src="../Images/icone-3.png" alt="ICONE ORDENS DE SERVIÇO">
+                <span>Ordens de Serviço</span>
+            </a>
+
+            <a href="manutencao-preventiva.html">
+                <img src="../Images/icone-4.png" alt="ICONE MANUTENÇÃO PREVENTIVA">
+                <span>Manutenção Preventiva</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <a href="perfil.html" class="nav-perfil">
+
+                <div class="avatar">
+
+                    <img src="../Images/icone-5.png" alt="Avatar">
+
+                    <span class="nome-paciente">
+                        Rafaela Lima
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- Logout da DEMO -->
+            <a
+                href="../index.html"
+                class="bt-navegacao"
+                title="Sair"
+            >
+                <img src="../Images/icone-6.png" alt="Sair">
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo-principal">
+
+        <div class="main-top">
+
+            <span id="titulo-pagina">
+                Cadastro de Equipamento
+            </span>
+
+            <a
+                href="Cadastro_equipamentos.html"
+                class="bt-novo-equipamento"
+            >
+                Novo Equipamento
+            </a>
+
+        </div>
+
+
+        <form
+            id="form-equipamento"
+            class="form-container"
+        >
+
+            <!-- IDENTIFICAÇÃO -->
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+                    Identificação do Equipamento
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Número Patrimonial *
+                        </label>
+
+                        <input
+                            id="num_patrimonio"
+                            type="text"
+                            placeholder="Ex: PAT-2025-001"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Modelo
+                        </label>
+
+                        <input
+                            id="modelo"
+                            type="text"
+                            placeholder="Ex: VX-3000"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Número de Série
+                        </label>
+
+                        <input
+                            id="num_serie"
+                            type="text"
+                            placeholder="Ex: SN-2025-001"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Tipo de Equipamento *
+                        </label>
+
+                        <select
+                            id="id_tipo"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione o tipo
+                            </option>
+
+                            <option value="ventilador">
+                                Ventilador Mecânico
+                            </option>
+
+                            <option value="monitor">
+                                Monitor Multiparamétrico
+                            </option>
+
+                            <option value="bomba">
+                                Bomba de Infusão
+                            </option>
+
+                            <option value="desfibrilador">
+                                Desfibrilador
+                            </option>
+
+                            <option value="eletrocardiografo">
+                                Eletrocardiógrafo
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Fabricante *
+                        </label>
+
+                        <select
+                            id="id_fabricante"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione o fabricante
+                            </option>
+
+                            <option value="philips">
+                                Philips
+                            </option>
+
+                            <option value="drager">
+                                Dräger
+                            </option>
+
+                            <option value="ge">
+                                GE Healthcare
+                            </option>
+
+                            <option value="mindray">
+                                Mindray
+                            </option>
+
+                            <option value="medtronic">
+                                Medtronic
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Setor *
+                        </label>
+
+                        <select
+                            id="id_setor"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione o setor
+                            </option>
+
+                            <option value="uti-adulto">
+                                UTI Adulto
+                            </option>
+
+                            <option value="uti-pediatrica">
+                                UTI Pediátrica
+                            </option>
+
+                            <option value="pronto-socorro">
+                                Pronto Socorro
+                            </option>
+
+                            <option value="centro-cirurgico">
+                                Centro Cirúrgico
+                            </option>
+
+                            <option value="enfermaria">
+                                Enfermaria
+                            </option>
+
+                            <option value="radiologia">
+                                Radiologia
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Data de Aquisição
+                        </label>
+
+                        <input
+                            id="data_aquisicao"
+                            type="date"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Valor de Aquisição (R$)
+                        </label>
+
+                        <input
+                            id="valor_aquisicao"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="Ex: 12500.00"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CRITICIDADE -->
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+                    Criticidade *
+                </h3>
+
+
+                <div class="cards-radio">
+
+                    <label class="radio-card">
+
+                        <input
+                            type="radio"
+                            name="criticidade"
+                            value="A"
+                            required
+                        >
+
+                        <div class="radio-card-content vermelho">
+
+                            <span class="badge-letra">
+                                A
+                            </span>
+
+                            <span class="card-titulo">
+                                Alta criticidade
+                            </span>
+
+                            <span class="card-desc">
+                                Risco de vida imediato
+                            </span>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="radio-card">
+
+                        <input
+                            type="radio"
+                            name="criticidade"
+                            value="B"
+                        >
+
+                        <div class="radio-card-content amarelo">
+
+                            <span class="badge-letra">
+                                B
+                            </span>
+
+                            <span class="card-titulo">
+                                Média criticidade
+                            </span>
+
+                            <span class="card-desc">
+                                Impacto assistencial indireto
+                            </span>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="radio-card">
+
+                        <input
+                            type="radio"
+                            name="criticidade"
+                            value="C"
+                        >
+
+                        <div class="radio-card-content azul">
+
+                            <span class="badge-letra">
+                                C
+                            </span>
+
+                            <span class="card-titulo">
+                                Baixa criticidade
+                            </span>
+
+                            <span class="card-desc">
+                                Sem risco direto ao paciente
+                            </span>
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- FREQUÊNCIA -->
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+                    Frequência de Manutenção Preventiva *
+                </h3>
+
+
+                <div class="frequency-grid">
+
+                    <label class="radio-freq">
+
+                        <input
+                            type="radio"
+                            name="frequencia"
+                            value="mensal"
+                            required
+                        >
+
+                        <div class="freq-card">
+                            Mensal
+                        </div>
+
+                    </label>
+
+
+                    <label class="radio-freq">
+
+                        <input
+                            type="radio"
+                            name="frequencia"
+                            value="trimestral"
+                        >
+
+                        <div class="freq-card">
+                            Trimestral
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- AÇÕES -->
+            <div class="form-actions">
+
+                <a
+                    href="equipamentos.html"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </a>
+
+                <button
+                    type="submit"
+                    class="btn-salvar"
+                >
+                    Salvar Equipamento
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!--
+        DEMO ESTÁTICA
+
+        O formulário não envia dados para API,
+        banco de dados ou backend.
+
+        O envio apenas simula o cadastro e
+        retorna para a página de equipamentos.
+    -->
+    <script>
+
+        const formulario =
+            document.getElementById("form-equipamento");
+
+
+        formulario.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            alert(
+                "Equipamento cadastrado com sucesso!"
+            );
+
+
+            window.location.href = "equipamentos.html";
+
+        });
+
+    </script>
+
+</body>
+</html>
+

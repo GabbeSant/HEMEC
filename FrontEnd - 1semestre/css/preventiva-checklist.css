@@ -1,0 +1,10 @@
+/* Para Chrome, Safari e Edge */
+element::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Para Firefox e padrões modernos */
+  element {
+    scrollbar-width: none;
+  }
+  

@@ -1,0 +1,332 @@
+```html
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Hemec | Abrir chamado</title>
+
+    <link rel="stylesheet" href="../css/abertura-chamado.css" />
+    <link
+      rel="shortcut icon"
+      href="../Images/favicon.ico"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+
+    <!-- MENU -->
+    <aside class="sidebar">
+
+      <!-- Logo -->
+      <img src="../Images/logo.png" class="logo" alt="logo" />
+
+      <hr />
+
+      <!-- Menu Principal -->
+      <nav class="menu-section">
+
+        <span>PRINCIPAL</span>
+
+        <a href="dashboard.html" class="nav-dashboard">
+          <img src="../Images/icone-1.png" alt="ICONE DASHBOARD" />
+          <span>Dashboard</span>
+        </a>
+
+        <a href="equipamentos.html" class="nav-equipamentos">
+          <img src="../Images/icone-2.png" alt="ICONE EQUIPAMENTOS" />
+          <span>Equipamentos</span>
+        </a>
+
+      </nav>
+
+
+      <!-- Menu Manutenção -->
+      <nav class="menu-section">
+
+        <span>MANUTENÇÃO</span>
+
+        <a href="ordens-servico.html" class="nav-ordens-servico">
+          <img
+            src="../Images/icone-3.png"
+            alt="ICONE ORDENS DE SERVIÇO"
+          />
+          <span>Ordens de Serviço</span>
+        </a>
+
+        <a href="manutencao-preventiva.html" class="nav-manut-prev">
+          <img
+            src="../Images/icone-4.png"
+            alt="ICONE MANUTENÇÃO PREVENTIVA"
+          />
+          <span>Manutenção Preventiva</span>
+        </a>
+
+      </nav>
+
+
+      <!-- Footer do Usuário -->
+      <div class="sidebar-footer">
+
+        <a href="perfil.html" class="nav-perfil">
+
+          <div class="avatar">
+
+            <img
+              src="../Images/icone-5.png"
+              alt="Avatar"
+            />
+
+            <span class="nome-paciente">
+              Rafaela Lima
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <!-- Logout apenas visual para a demo -->
+        <a
+          href="../index.html"
+          class="bt-navegacao"
+          title="Sair"
+        >
+          <img
+            src="../Images/icone-6.png"
+            alt="IMAGEM DE SAIR"
+          />
+        </a>
+
+      </div>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo-principal">
+
+      <!-- TOPO DA PÁGINA -->
+      <div class="main-top">
+
+        <span>
+          Abertura de Chamado
+        </span>
+
+        <a
+          href="Cadastro_equipamentos.html"
+          class="bt-novo-equipamento"
+        >
+          Novo Equipamento
+        </a>
+
+      </div>
+
+
+      <!-- CONTAINER DA ABERTURA -->
+      <form
+        class="conteiner-abertura"
+        id="form-abertura-chamado"
+      >
+
+        <!-- Badge da OS -->
+        <span
+          class="os-badge"
+          id="os-badge"
+        >
+          Nova OS
+        </span>
+
+
+        <!-- Linha 1: Equipamento e Setor -->
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label>
+              EQUIPAMENTO
+            </label>
+
+            <select
+              class="select-custom"
+              id="equipamento"
+              name="equipamento"
+              required
+            >
+              <option value="Ventilador Mecânico VX-3000">
+                Ventilador Mecânico VX-3000
+              </option>
+
+              <option value="Monitor Multiparamétrico">
+                Monitor Multiparamétrico
+              </option>
+
+              <option value="Bomba de Infusão">
+                Bomba de Infusão
+              </option>
+
+              <option value="Desfibrilador">
+                Desfibrilador
+              </option>
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              SETOR
+            </label>
+
+            <select
+              class="select-custom"
+              id="setor"
+              name="setor"
+              required
+            >
+              <option value="UTI Adulto">
+                UTI Adulto
+              </option>
+
+              <option value="UTI Pediátrica">
+                UTI Pediátrica
+              </option>
+
+              <option value="Pronto Socorro">
+                Pronto Socorro
+              </option>
+
+              <option value="Centro Cirúrgico">
+                Centro Cirúrgico
+              </option>
+
+              <option value="Enfermaria">
+                Enfermaria
+              </option>
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <!-- Linha 2: Criticidade -->
+        <div class="form-group">
+
+          <label>
+            CRITICIDADE DO CHAMADO
+          </label>
+
+          <div class="criticidade-options">
+
+            <button
+              type="button"
+              class="criticidade-option option-a"
+              data-valor="A"
+            >
+              A
+            </button>
+
+            <button
+              type="button"
+              class="criticidade-option option-b"
+              data-valor="B"
+            >
+              B
+            </button>
+
+            <button
+              type="button"
+              class="criticidade-option option-c"
+              data-valor="C"
+            >
+              C
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Linha 3: Descrição -->
+        <div class="form-group">
+
+          <label>
+            DESCRIÇÃO DO PROBLEMA
+          </label>
+
+          <textarea
+            class="textarea-problema"
+            id="descricao"
+            name="descricao"
+            placeholder="Descreva o problema"
+          ></textarea>
+
+        </div>
+
+
+        <!-- Ações -->
+        <div class="form-actions">
+
+          <button
+            type="submit"
+            class="btn-registrar"
+          >
+            <span>
+              Registrar Chamado
+            </span>
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+    <!--
+      DEMO ESTÁTICA
+
+      Não há conexão com API, backend ou banco de dados.
+      O formulário apenas simula o registro do chamado.
+    -->
+    <script>
+      // Seleção de criticidade
+      const botoesCriticidade = document.querySelectorAll(".criticidade-option");
+    
+      botoesCriticidade.forEach((botao) => {
+        botao.addEventListener("click", () => {
+    
+          // Remove a seleção de todos
+          botoesCriticidade.forEach((item) => {
+            item.classList.remove("active");
+            item.setAttribute("aria-pressed", "false");
+          });
+    
+          // Mantém o botão clicado selecionado
+          botao.classList.add("active");
+          botao.setAttribute("aria-pressed", "true");
+        });
+      });
+    
+    
+      // Simulação do registro do chamado
+      const formulario = document.getElementById("form-abertura-chamado");
+    
+      formulario.addEventListener("submit", (event) => {
+        event.preventDefault();
+    
+        alert(
+          "Chamado registrado com sucesso!"
+        );
+    
+        window.location.href = "ordens-servico.html";
+      });
+    </script>
+
+  </body>
+</html>
+```

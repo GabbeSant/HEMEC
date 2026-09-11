@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Hemec | Ordens de Serviço</title>
+
+    <link rel="stylesheet" href="../css/ordens-servico.css" />
+
+    <link
+      rel="shortcut icon"
+      href="../Images/favicon.ico"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <!-- MENU LATERAL -->
+
+    <aside class="sidebar">
+      <img src="../Images/logo.png" class="logo" alt="logo" />
+
+      <hr />
+
+      <!-- MENU PRINCIPAL -->
+
+      <nav class="menu-section">
+        <span> PRINCIPAL </span>
+
+        <a href="dashboard.html" class="nav-dashboard">
+          <img src="../Images/icone-1.png" alt="ICONE DASHBOARD" />
+
+          <span> Dashboard </span>
+        </a>
+
+        <a href="equipamentos.html" class="nav-equipamentos">
+          <img src="../Images/icone-2.png" alt="ICONE EQUIPAMENTOS" />
+
+          <span> Equipamentos </span>
+        </a>
+      </nav>
+
+      <!-- MENU MANUTENÇÃO -->
+
+      <nav class="menu-section">
+        <span> MANUTENÇÃO </span>
+
+        <a href="#" class="nav-ordens-servico">
+          <img src="../Images/icone-3.png" alt="ICONE ORDENS DE SERVIÇO" />
+
+          <span> Ordens de Serviço </span>
+        </a>
+
+        <a href="manutencao-preventiva.html" class="nav-manut-prev">
+          <img src="../Images/icone-4.png" alt="ICONE MANUTENÇÃO PREVENTIVA" />
+
+          <span> Manutenção Preventiva </span>
+        </a>
+      </nav>
+
+      <!-- USUÁRIO -->
+
+      <div class="sidebar-footer">
+        <a href="perfil.html" class="nav-perfil">
+          <div class="avatar">
+            <img src="../Images/icone-5.png" alt="Avatar" />
+
+            <span class="nome-paciente"> Rafaela Lima </span>
+          </div>
+        </a>
+
+        <a href="../index.html" class="bt-navegacao" title="Sair">
+          <img src="../Images/icone-6.png" alt="IMAGEM DE SAIR" />
+        </a>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <div class="conteudo-principal">
+      <!-- TOPO DA PÁGINA -->
+
+      <div class="main-top">
+        <span> Ordens de Serviço </span>
+
+        <a href="Cadastro_equipamentos.html" class="bt-novo-equipamento">
+          Novo Equipamento
+        </a>
+      </div>
+
+      <!-- INDICADORES DOS CHAMADOS -->
+
+      <div class="indicadores-chamados">
+        <div class="total-chamados">
+          <span class="titulo-indicador"> TOTAL DE CHAMADOS </span>
+
+          <span class="valor-indicador"> 12 </span>
+        </div>
+
+        <div class="criticos">
+          <span class="titulo-indicador"> EQUIPAMENTOS CRÍTICOS </span>
+
+          <span class="valor-indicador"> 4 </span>
+
+          <span> Requerem ação imediata </span>
+        </div>
+
+        <div class="chamados-concluidos">
+          <span class="titulo-indicador"> CHAMADOS CONCLUÍDOS </span>
+
+          <span class="valor-indicador"> 8 </span>
+        </div>
+      </div>
+
+      <!-- TABELA DE ORDENS DE SERVIÇO -->
+
+      <div class="ordens-servico">
+        <table class="tabela-ordens">
+          <thead>
+            <tr>
+              <th>OS</th>
+
+              <th>EQUIPAMENTO</th>
+
+              <th>SETOR</th>
+
+              <th>CRITICIDADE</th>
+
+              <th>STATUS</th>
+
+              <th>ABERTURA</th>
+
+              <th>AÇÃO</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- OS 1 -->
+
+            <tr>
+              <td>
+                <span class="coluna-os"> #OS-2026-089 </span>
+              </td>
+
+              <td>
+                <span class="coluna-EQ"> Ventilador Mecânico VX-3000 </span>
+              </td>
+
+              <td>UTI Adulto</td>
+
+              <td>
+                <span class="badge-criticidade vermelho"> A </span>
+              </td>
+
+              <td>
+                <span class="badge-status vermelho"> Corrigir </span>
+              </td>
+
+              <td>06/08/26</td>
+
+              <td>
+                <a href="manutencao-corretiva.html" class="btn-executar">
+                  Executar
+                </a>
+              </td>
+            </tr>
+
+            <!-- OS 2 -->
+
+            <tr>
+              <td>
+                <span class="coluna-os"> #OS-2026-088 </span>
+              </td>
+
+              <td>
+                <span class="coluna-EQ"> Monitor Multiparamétrico MX-500 </span>
+              </td>
+
+              <td>UTI Adulto</td>
+
+              <td>
+                <span class="badge-criticidade amarelo"> B </span>
+              </td>
+
+              <td>
+                <span class="badge-status amarelo"> Em reparo </span>
+              </td>
+
+              <td>05/08/26</td>
+
+              <td>
+                <a href="manutencao-corretiva.html" class="btn-executar">
+                  Executar
+                </a>
+              </td>
+            </tr>
+
+            <!-- OS 3 -->
+
+            <tr>
+              <td>
+                <span class="coluna-os"> #OS-2026-087 </span>
+              </td>
+
+              <td>
+                <span class="coluna-EQ"> Bomba de Infusão BI-200 </span>
+              </td>
+
+              <td>Enfermaria</td>
+
+              <td>
+                <span class="badge-criticidade amarelo"> B </span>
+              </td>
+
+              <td>
+                <span class="badge-status amarelo"> Em reparo </span>
+              </td>
+
+              <td>04/08/26</td>
+
+              <td>
+                <a href="manutencao-corretiva.html" class="btn-executar">
+                  Executar
+                </a>
+              </td>
+            </tr>
+
+            <!-- OS 4 -->
+
+            <tr>
+              <td>
+                <span class="coluna-os"> #OS-2026-086 </span>
+              </td>
+
+              <td>
+                <span class="coluna-EQ"> Monitor Cardíaco MC-700 </span>
+              </td>
+
+              <td>UTI Neonatal</td>
+
+              <td>
+                <span class="badge-criticidade vermelho"> A </span>
+              </td>
+
+              <td>
+                <span class="badge-status vermelho"> Corrigir </span>
+              </td>
+
+              <td>03/08/26</td>
+
+              <td>
+                <a href="manutencao-corretiva.html" class="btn-executar">
+                  Executar
+                </a>
+              </td>
+            </tr>
+
+            <!-- OS 5 -->
+
+            <tr>
+              <td>
+                <span class="coluna-os"> #OS-2026-085 </span>
+              </td>
+
+              <td>
+                <span class="coluna-EQ"> Desfibrilador DF-500 </span>
+              </td>
+
+              <td>Emergência</td>
+
+              <td>
+                <span class="badge-criticidade vermelho"> A </span>
+              </td>
+
+              <td>
+                <span class="badge-status verde"> Concluído </span>
+              </td>
+
+              <td>02/08/26</td>
+
+              <td>
+                <a href="manutencao-corretiva.html" class="btn-executar">
+                  Visualizar
+                </a>
+              </td>
+            </tr>
+
+            <!-- OS 6 -->
+
+            <tr>
+              <td>
+                <span class="coluna-os"> #OS-2026-084 </span>
+              </td>
+
+              <td>
+                <span class="coluna-EQ"> Autoclave Hospitalar AH-100 </span>
+              </td>
+
+              <td>Centro Cirúrgico</td>
+
+              <td>
+                <span class="badge-criticidade azul"> C </span>
+              </td>
+
+              <td>
+                <span class="badge-status verde"> Concluído </span>
+              </td>
+
+              <td>01/08/26</td>
+
+              <td>
+                <a href="manutencao-preventiva.html" class="btn-executar">
+                  Visualizar
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BOTÃO ABRIR CHAMADO -->
+
+      <div class="btn-chamado-container">
+        <a href="abertura-chamado.html" class="btn-chamado">
+          + Abrir chamado
+        </a>
+      </div>
+    </div>
+
+    <!--
+        DEMO ESTÁTICA
+
+        Esta página não utiliza:
+        - API
+        - FastAPI
+        - Banco de dados
+        - autenticação
+        - JavaScript externo
+
+        Todos os dados exibidos são fictícios
+        e estão definidos diretamente no HTML.
+    -->
+  </body>
+</html>

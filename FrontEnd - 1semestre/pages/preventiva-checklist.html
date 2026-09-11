@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemec | Checklist Preventiva</title>
+
+    <link rel="stylesheet" href="../css/manutencao-preventiva.css">
+    <link rel="shortcut icon" href="../Images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+
+        <img src="../Images/logo.png" class="logo" alt="logo">
+        <hr>
+
+        <!-- MENU PRINCIPAL -->
+        <nav class="menu-section">
+            <span>PRINCIPAL</span>
+
+            <a href="dashboard.html" class="nav-dashboard">
+                <img src="../Images/icone-1.png" alt="ICONE DASHBOARD">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="equipamentos.html" class="nav-equipamentos">
+                <img src="../Images/icone-2.png" alt="ICONE EQUIPAMENTOS">
+                <span>Equipamentos</span>
+            </a>
+        </nav>
+
+        <!-- MENU MANUTENÇÃO -->
+        <nav class="menu-section">
+            <span>MANUTENÇÃO</span>
+
+            <a href="ordens-servico.html" class="nav-ordens-servico">
+                <img src="../Images/icone-3.png" alt="ICONE ORDENS DE SERVIÇO">
+                <span>Ordens de Serviço</span>
+            </a>
+
+            <a href="manutencao-preventiva.html" class="nav-manut-prev">
+                <img src="../Images/icone-4.png" alt="ICONE MANUTENÇÃO PREVENTIVA">
+                <span>Manutenção Preventiva</span>
+            </a>
+        </nav>
+
+        <!-- USUÁRIO -->
+        <div class="sidebar-footer">
+
+            <a href="perfil.html" class="nav-perfil">
+                <div class="avatar">
+                    <img src="../Images/icone-5.png" alt="Avatar">
+                    <span class="nome-paciente">Rafaela Lima</span>
+                </div>
+            </a>
+
+            <a href="login.html" class="bt-navegacao">
+                <img src="../Images/icone-6.png" alt="Sair">
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo-principal">
+
+        <!-- TOPO -->
+        <div class="main-top">
+            <span>Checklist de Manutenção Preventiva</span>
+
+            <a href="equipamentos.html" class="bt-novo-equipamento">
+                Voltar
+            </a>
+        </div>
+
+
+        <!-- FORMULÁRIO -->
+        <form class="conteiner-manutencao" id="form-preventiva">
+
+            <!-- INFORMAÇÕES DA OS -->
+            <div class="info-os" id="info-os">
+
+                <span class="os-badge" id="os-numero">
+                    #OS-2026-0042
+                </span>
+
+                <span id="os-equipamento">
+                    Ventilador Mecânico VX-3000
+                </span>
+
+            </div>
+
+
+            <!-- TÉCNICO E DATA -->
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>TÉCNICO RESPONSÁVEL</label>
+
+                    <select id="responsavel" class="select-custom" required>
+
+                        <option value="">
+                            Selecione o técnico
+                        </option>
+
+                        <option value="1">
+                            Carlos Oliveira
+                        </option>
+
+                        <option value="2">
+                            João Santos
+                        </option>
+
+                        <option value="3">
+                            Marcos Pereira
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>DATA DE EXECUÇÃO</label>
+
+                    <input
+                        type="date"
+                        id="data-execucao"
+                        class="select-custom"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBSTITUIÇÃO DE PEÇAS -->
+            <div class="form-group">
+
+                <label>HOUVE SUBSTITUIÇÃO DE PEÇAS?</label>
+
+                <div class="radio-group">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="substituicao"
+                            value="sim"
+                        >
+                        Sim
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="substituicao"
+                            value="nao"
+                            checked
+                        >
+                        Não
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- PEÇAS -->
+            <div
+                class="form-group"
+                id="secao-pecas"
+                style="display:none"
+            >
+
+                <label>PEÇAS SUBSTITUÍDAS</label>
+
+                <div id="lista-pecas"></div>
+
+                <button
+                    type="button"
+                    class="btn-add-peca"
+                    id="btn-add-peca"
+                >
+                    + Adicionar Peça
+                </button>
+
+            </div>
+
+
+            <!-- CHECKLIST -->
+            <div class="form-group">
+
+                <label>CHECKLIST DE VERIFICAÇÃO</label>
+
+                <div
+                    id="checklist-itens"
+                    class="checklist-container"
+                >
+
+                    <label>
+                        <input type="checkbox">
+                        Inspeção visual do equipamento
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Verificação das conexões elétricas
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Verificação dos componentes mecânicos
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Teste de funcionamento
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Verificação dos dispositivos de segurança
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Limpeza e higienização do equipamento
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- AÇÕES -->
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn-registrar"
+                >
+                    Registrar Manutenção
+                </button>
+
+                <a
+                    href="ordens-servico.html"
+                    class="btn-cancelar"
+                >
+                    Cancelar
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!--
+        DEMO ESTÁTICA
+
+        Não existe:
+        - API
+        - Backend
+        - Banco de dados
+        - Autenticação
+        - Requisições HTTP
+        - Parâmetros vindos do backend
+
+        O formulário funciona apenas como demonstração visual.
+    -->
+
+    <script>
+
+        // Exibe/oculta a área de peças
+        const radios = document.querySelectorAll(
+            'input[name="substituicao"]'
+        );
+
+        const secaoPecas = document.getElementById(
+            'secao-pecas'
+        );
+
+        radios.forEach(radio => {
+
+            radio.addEventListener('change', () => {
+
+                if (radio.value === 'sim' && radio.checked) {
+                    secaoPecas.style.display = 'block';
+                }
+
+                if (radio.value === 'nao' && radio.checked) {
+                    secaoPecas.style.display = 'none';
+                }
+
+            });
+
+        });
+
+
+        // Adicionar peças apenas para demonstração
+        const btnAddPeca = document.getElementById(
+            'btn-add-peca'
+        );
+
+        const listaPecas = document.getElementById(
+            'lista-pecas'
+        );
+
+        btnAddPeca.addEventListener('click', () => {
+
+            const item = document.createElement('div');
+
+            item.style.display = 'flex';
+            item.style.gap = '10px';
+            item.style.marginBottom = '10px';
+
+            item.innerHTML = `
+                <input
+                    type="text"
+                    placeholder="Nome da peça"
+                    class="select-custom"
+                >
+
+                <input
+                    type="number"
+                    placeholder="Quantidade"
+                    min="1"
+                    value="1"
+                    class="select-custom"
+                >
+            `;
+
+            listaPecas.appendChild(item);
+
+        });
+
+
+        // Evita envio para backend
+        const form = document.getElementById(
+            'form-preventiva'
+        );
+
+        form.addEventListener('submit', (event) => {
+
+            event.preventDefault();
+
+            alert(
+                'Manutenção preventiva registrada com sucesso! (DEMO)'
+            );
+
+        });
+
+    </script>
+
+</body>
+</html>

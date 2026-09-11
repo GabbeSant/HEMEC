@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Hemec | Equipamentos</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/equipamentos.css"
+    >
+
+    <link
+        rel="shortcut icon"
+        href="../Images/favicon.ico"
+        type="image/x-icon"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- MENU LATERAL -->
+
+    <aside class="sidebar">
+
+
+        <!-- Logo -->
+
+        <img
+            src="../Images/logo.png"
+            class="logo"
+            alt="logo"
+        >
+
+        <hr>
+
+
+        <!-- Menu Principal -->
+
+        <nav class="menu-section">
+
+            <span>
+                PRINCIPAL
+            </span>
+
+
+            <a
+                href="dashboard.html"
+                class="nav-dashboard"
+            >
+
+                <img
+                    src="../Images/icone-1.png"
+                    alt="ICONE DASHBOARD"
+                >
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="equipamentos.html"
+                class="nav-equipamentos"
+            >
+
+                <img
+                    src="../Images/icone-2.png"
+                    alt="ICONE EQUIPAMENTOS"
+                >
+
+                <span>
+                    Equipamentos
+                </span>
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- Menu Manutenção -->
+
+        <nav class="menu-section">
+
+            <span>
+                MANUTENÇÃO
+            </span>
+
+
+            <a
+                href="ordens-servico.html"
+                class="nav-ordens-servico"
+            >
+
+                <img
+                    src="../Images/icone-3.png"
+                    alt="ICONE ORDENS DE SERVIÇO"
+                >
+
+                <span>
+                    Ordens de Serviço
+                </span>
+
+            </a>
+
+
+            <a
+                href="manutencao-preventiva.html"
+                class="nav-manut-prev"
+            >
+
+                <img
+                    src="../Images/icone-4.png"
+                    alt="ICONE MANUTENÇÃO PREVENTIVA"
+                >
+
+                <span>
+                    Manutenção Preventiva
+                </span>
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- Footer do Usuário -->
+
+        <div class="sidebar-footer">
+
+
+            <a
+                href="perfil.html"
+                class="nav-perfil"
+            >
+
+                <div class="avatar">
+
+                    <img
+                        src="../Images/icone-5.png"
+                        alt="Avatar"
+                    >
+
+                    <span class="nome-paciente">
+                        Rafaela Lima
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- Logout da demonstração -->
+
+            <a
+                href="../index.html"
+                class="bt-navegacao"
+                title="Sair"
+            >
+
+                <img
+                    src="../Images/icone-6.png"
+                    alt="IMAGEM DE SAIR"
+                >
+
+            </a>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <div class="conteudo-principal">
+
+
+        <!-- TOPO DA PÁGINA -->
+
+        <div class="main-top">
+
+            <span>
+                Equipamentos
+            </span>
+
+
+            <a
+                href="Cadastro_equipamentos.html"
+                class="bt-novo-equipamento"
+            >
+                Novo Equipamento
+            </a>
+
+        </div>
+
+
+
+        <!-- BUSCA -->
+
+        <div class="conteiner-busca">
+
+            <img
+                src="../Images/icone-13.png"
+                alt="LUPA"
+                class="icone-busca"
+            >
+
+
+            <input
+                type="text"
+                id="busca-equipamento"
+                placeholder="Buscar por nome, patrimônio, modelo..."
+                class="input-busca"
+            >
+
+        </div>
+
+
+
+        <!-- TABELA DE EQUIPAMENTOS -->
+
+        <div class="lista-equipamentos">
+
+            <table class="tabela-equipamentos">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            PATRIMÔNIO
+                        </th>
+
+                        <th>
+                            EQUIPAMENTO
+                        </th>
+
+                        <th>
+                            FABRICANTE/MODELO
+                        </th>
+
+                        <th>
+                            SETOR
+                        </th>
+
+                        <th>
+                            CRITICIDADE
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                        <th>
+                            MANUTENÇÕES
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="lista-equipamentos">
+
+
+                    <!-- EQUIPAMENTO 1 -->
+
+                    <tr>
+
+                        <td>
+                            PAT-2025-001
+                        </td>
+
+                        <td>
+                            Ventilador Mecânico
+                        </td>
+
+                        <td>
+                            Dräger / VX-3000
+                        </td>
+
+                        <td>
+                            UTI Adulto
+                        </td>
+
+                        <td>
+                            <span class="badge-criticidade vermelho">
+                                A
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge-status ativo">
+                                Ativo
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="detalhes-equipamento.html"
+                                class="btn-detalhes"
+                            >
+                                Ver detalhes
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <!-- EQUIPAMENTO 2 -->
+
+                    <tr>
+
+                        <td>
+                            PAT-2025-002
+                        </td>
+
+                        <td>
+                            Monitor Multiparamétrico
+                        </td>
+
+                        <td>
+                            Philips / IntelliVue MX450
+                        </td>
+
+                        <td>
+                            UTI Adulto
+                        </td>
+
+                        <td>
+                            <span class="badge-criticidade vermelho">
+                                A
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge-status ativo">
+                                Ativo
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="detalhes-equipamento.html"
+                                class="btn-detalhes"
+                            >
+                                Ver detalhes
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <!-- EQUIPAMENTO 3 -->
+
+                    <tr>
+
+                        <td>
+                            PAT-2025-003
+                        </td>
+
+                        <td>
+                            Bomba de Infusão
+                        </td>
+
+                        <td>
+                            Baxter / Infusomat Space
+                        </td>
+
+                        <td>
+                            UTI Adulto
+                        </td>
+
+                        <td>
+                            <span class="badge-criticidade amarelo">
+                                B
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge-status ativo">
+                                Ativo
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="detalhes-equipamento.html"
+                                class="btn-detalhes"
+                            >
+                                Ver detalhes
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <!-- EQUIPAMENTO 4 -->
+
+                    <tr>
+
+                        <td>
+                            PAT-2025-004
+                        </td>
+
+                        <td>
+                            Eletrocardiógrafo
+                        </td>
+
+                        <td>
+                            GE / MAC 2000
+                        </td>
+
+                        <td>
+                            Cardiologia
+                        </td>
+
+                        <td>
+                            <span class="badge-criticidade amarelo">
+                                B
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge-status manutencao">
+                                Em manutenção
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="detalhes-equipamento.html"
+                                class="btn-detalhes"
+                            >
+                                Ver detalhes
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <!-- EQUIPAMENTO 5 -->
+
+                    <tr>
+
+                        <td>
+                            PAT-2025-005
+                        </td>
+
+                        <td>
+                            Desfibrilador
+                        </td>
+
+                        <td>
+                            Philips / Efficia DFM100
+                        </td>
+
+                        <td>
+                            Emergência
+                        </td>
+
+                        <td>
+                            <span class="badge-criticidade vermelho">
+                                A
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge-status ativo">
+                                Ativo
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="detalhes-equipamento.html"
+                                class="btn-detalhes"
+                            >
+                                Ver detalhes
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+
+                    <!-- EQUIPAMENTO 6 -->
+
+                    <tr>
+
+                        <td>
+                            PAT-2025-006
+                        </td>
+
+                        <td>
+                            Oxímetro de Pulso
+                        </td>
+
+                        <td>
+                            Mindray / PM-60
+                        </td>
+
+                        <td>
+                            Enfermaria
+                        </td>
+
+                        <td>
+                            <span class="badge-criticidade azul">
+                                C
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge-status ativo">
+                                Ativo
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="detalhes-equipamento.html"
+                                class="btn-detalhes"
+                            >
+                                Ver detalhes
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!--
+        BUSCA LOCAL DA DEMONSTRAÇÃO
+
+        Não utiliza backend, API ou banco de dados.
+        Apenas filtra os equipamentos que já estão
+        presentes na tabela.
+    -->
+
+    <script>
+
+        const campoBusca =
+            document.getElementById("busca-equipamento");
+
+        const linhas =
+            document.querySelectorAll(
+                "#lista-equipamentos tr"
+            );
+
+
+        campoBusca.addEventListener(
+            "input",
+            function () {
+
+                const termo =
+                    this.value
+                        .toLowerCase()
+                        .trim();
+
+
+                linhas.forEach(
+                    function (linha) {
+
+                        const texto =
+                            linha.textContent
+                                .toLowerCase();
+
+
+                        if (
+                            texto.includes(termo)
+                        ) {
+
+                            linha.style.display =
+                                "";
+
+                        } else {
+
+                            linha.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

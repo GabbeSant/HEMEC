@@ -5,3 +5,5 @@ dist/
 !.env.example
 *.local
 AGENTS.md
+SkillFront.md
+SKILL.md

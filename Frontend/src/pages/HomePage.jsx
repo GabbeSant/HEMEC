@@ -7,29 +7,23 @@ export default function HomePage() {
     <>
       <section id="inicio" className="hero" aria-labelledby="page-title">
         <div className="hero-copy">
-          <p className="section-label">
-            Gestão de equipamentos médico-hospitalares
-          </p>
-          <h1 id="page-title">
-            Cuidar dos
-            <br />
-            equipamentos.
-            <br />
-            <span>Apoiar o cuidado.</span>
-          </h1>
+          <h1 id="page-title">Cada equipamento tem uma história de cuidado.</h1>
           <p className="hero-description">
-            Do cadastro ao histórico de manutenção: organize equipamentos,
-            comunique falhas e acompanhe cada atendimento em um só lugar.
+            O HEMEC reúne o cadastro dos equipamentos hospitalares, os chamados
+            e os registros de manutenção. Acompanhe o que precisa de atenção e o
+            trabalho realizado em cada atendimento.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#acesso">
-              Acessar o sistema
+            <a className="button button-primary" href="#/login">
+              Entrar no sistema
             </a>
             <a className="button button-secondary" href="#funcionalidades">
-              Conhecer funcionalidades
+              Como funciona
             </a>
           </div>
-          <p className="demo-note">Projeto acadêmico em desenvolvimento.</p>
+          <p className="demo-note">
+            Desenvolvido para apoiar a organização da manutenção hospitalar.
+          </p>
         </div>
         <HeroCarousel />
       </section>
@@ -39,21 +33,14 @@ export default function HomePage() {
         aria-labelledby="features-title"
       >
         <div className="section-heading">
-          <h2 id="features-title">
-            Da identificação
-            <br />
-            ao histórico.
-          </h2>
+          <h2 id="features-title">Um registro que acompanha o trabalho.</h2>
           <p>
-            Um fluxo para localizar o equipamento, registrar a necessidade e
-            acompanhar o trabalho técnico.
+            Do patrimônio ao serviço executado, cada etapa mantém o equipamento
+            como ponto de referência.
           </p>
         </div>
         <div className="feature-grid">
           <article className="feature">
-            <span className="feature-number" aria-hidden="true">
-              01
-            </span>
             <h3>Equipamentos</h3>
             <p>
               Patrimônio, série, marca, modelo e setor. Uma ficha para consultar
@@ -61,9 +48,6 @@ export default function HomePage() {
             </p>
           </article>
           <article className="feature">
-            <span className="feature-number" aria-hidden="true">
-              02
-            </span>
             <h3>Chamados</h3>
             <p>
               O registro da necessidade: equipamento, solicitante, problema
@@ -71,9 +55,6 @@ export default function HomePage() {
             </p>
           </article>
           <article className="feature">
-            <span className="feature-number" aria-hidden="true">
-              03
-            </span>
             <h3>Ordens de serviço</h3>
             <p>
               A organização da execução: responsável, serviços realizados, horas
@@ -88,18 +69,20 @@ export default function HomePage() {
         aria-labelledby="access-title"
       >
         <div>
-          <p className="section-label">Sobre esta versão</p>
-          <h2 id="access-title">O sistema está em construção.</h2>
+          <h2 id="access-title">Conheça o inventário de demonstração.</h2>
         </div>
         <div className="access-description">
           <p>
-            Esta página apresenta a proposta do HEMEC. O acesso ao sistema e as
-            funcionalidades descritas serão disponibilizados nas próximas
-            etapas.
+            Consulte uma lista de equipamentos fictícios e experimente a busca e
+            o filtro por situação. Cadastro, chamados e ordens de serviço serão
+            disponibilizados nas próximas etapas.
           </p>
+          <a className="button button-primary" href="#/equipamentos">
+            Consultar equipamentos
+          </a>
           <p className="access-note">
-            Sem autenticação, armazenamento de registros ou sincronização com a
-            equipe nesta versão.
+            Login e criação de conta são simulados. Sem autenticação real,
+            armazenamento de registros ou sincronização com a equipe.
           </p>
         </div>
       </section>

@@ -63,29 +63,6 @@ export default function HomePage() {
           </article>
         </div>
       </section>
-      <section
-        id="acesso"
-        className="access-section"
-        aria-labelledby="access-title"
-      >
-        <div>
-          <h2 id="access-title">Conheça o inventário de demonstração.</h2>
-        </div>
-        <div className="access-description">
-          <p>
-            Consulte uma lista de equipamentos fictícios e experimente a busca e
-            o filtro por situação. Cadastro, chamados e ordens de serviço serão
-            disponibilizados nas próximas etapas.
-          </p>
-          <a className="button button-primary" href="#/equipamentos">
-            Consultar equipamentos
-          </a>
-          <p className="access-note">
-            Login e criação de conta são simulados. Sem autenticação real,
-            armazenamento de registros ou sincronização com a equipe.
-          </p>
-        </div>
-      </section>
     </>
   );
 }

@@ -62,8 +62,18 @@ section[id] {
   scroll-margin-top: 24px;
 }
 .app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
   max-width: 1600px;
   margin-inline: auto;
+}
+.app-shell > main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 .skip-link {
   position: absolute;
@@ -120,7 +130,8 @@ section[id] {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: clamp(600px, 78svh, 760px);
+  /* Reserva espaço para o início das funcionalidades abaixo do banner. */
+  min-height: clamp(480px, calc(100svh - 216px), 760px);
   padding: 64px var(--gutter) 100px;
   background: var(--ink);
   isolation: isolate;
@@ -188,6 +199,13 @@ h1 {
   grid-template-columns: 0.8fr 1.2fr;
   gap: clamp(32px, 6vw, 96px);
   padding: 60px var(--gutter);
+  align-items: center;
+}
+.section-heading {
+  min-width: 0;
+  padding: clamp(24px, 2.5vw, 40px);
+  border-radius: 16px;
+  background: var(--surface);
 }
 .section-heading h2 {
   max-width: 390px;
@@ -223,28 +241,6 @@ h2 {
   max-width: 48ch;
   font-size: 13px;
   color: var(--muted);
-}
-.access-section {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: clamp(32px, 6vw, 96px);
-  margin: 0 var(--gutter) 36px;
-  padding: 32px;
-  border-radius: 16px;
-  background: var(--surface);
-}
-.access-section h2 {
-  max-width: 350px;
-  font-size: 27px;
-}
-.access-description {
-  max-width: 65ch;
-  font-size: 13px;
-  color: var(--muted);
-}
-.access-note {
-  font-size: 11px;
-  margin-top: 14px;
 }
 .app-footer {
   display: flex;
@@ -338,15 +334,6 @@ h2 {
   }
   .feature {
     padding-left: 16px;
-  }
-  .access-section {
-    grid-template-columns: 1fr;
-    padding: 24px;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .access-section h2 {
-    font-size: 25px;
   }
   .app-footer {
     flex-direction: column;

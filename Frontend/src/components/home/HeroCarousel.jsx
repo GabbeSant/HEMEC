@@ -6,15 +6,32 @@ import "./HeroCarousel.css";
 
 // Cada foto tem seu próprio ponto de enquadramento, sem alterar o arquivo original.
 const slides = [
-  { src: hospital, alt: "Leitos e equipamentos em uma sala hospitalar", label: "Ambiente hospitalar", position: "58% 62%" },
-  { src: medical, alt: "Equipe e equipamentos de monitoramento em uma sala cirúrgica", label: "Equipamentos no cuidado", position: "60% 45%" },
-  { src: electronics, alt: "Detalhe de componentes em uma placa eletrônica", label: "Tecnologia e manutenção", position: "50% 55%" },
+  {
+    src: hospital,
+    alt: "Leitos e equipamentos em uma sala hospitalar",
+    label: "Ambiente hospitalar",
+    position: "58% 62%",
+  },
+  {
+    src: medical,
+    alt: "Equipe e equipamentos de monitoramento em uma sala cirúrgica",
+    label: "Equipamentos no cuidado",
+    position: "60% 45%",
+  },
+  {
+    src: electronics,
+    alt: "Detalhe de componentes em uma placa eletrônica",
+    label: "Tecnologia e manutenção",
+    position: "50% 55%",
+  },
 ];
 const intervalMs = 6000;
 
 export default function HeroCarousel() {
   const [active, setActive] = useState(0);
-  const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const [reducedMotion, setReducedMotion] = useState(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
 
@@ -31,7 +48,8 @@ export default function HeroCarousel() {
     if (hovered || focused || reducedMotion) return;
     // Reinicia a contagem após uma seleção manual, dando seis segundos à nova foto.
     const timer = window.setInterval(() => {
-      if (!document.hidden) setActive(current => (current + 1) % slides.length);
+      if (!document.hidden)
+        setActive((current) => (current + 1) % slides.length);
     }, intervalMs);
     return () => window.clearInterval(timer);
   }, [active, hovered, focused, reducedMotion]);
@@ -42,7 +60,10 @@ export default function HeroCarousel() {
       aria-label="Imagens de ambiente hospitalar e tecnologia"
       aria-roledescription="carrossel"
     >
-      <div className="carousel-frame" aria-live={hovered || focused || reducedMotion ? "polite" : "off"}>
+      <div
+        className="carousel-frame"
+        aria-live={hovered || focused || reducedMotion ? "polite" : "off"}
+      >
         {slides.map((slide, index) => (
           <div
             key={slide.src}
@@ -52,7 +73,12 @@ export default function HeroCarousel() {
             aria-label={`${index + 1} de ${slides.length}: ${slide.label}`}
             aria-hidden={index !== active}
           >
-            <img src={slide.src} alt={slide.alt} style={{ objectPosition: slide.position }} fetchPriority={index === 0 ? "high" : "low"} />
+            <img
+              src={slide.src}
+              alt={slide.alt}
+              style={{ objectPosition: slide.position }}
+              fetchPriority={index === 0 ? "high" : "low"}
+            />
           </div>
         ))}
         <div className="carousel-shade" aria-hidden="true" />
@@ -64,8 +90,9 @@ export default function HeroCarousel() {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onFocusCapture={() => setFocused(true)}
-        onBlurCapture={event => {
-          if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
+        onBlurCapture={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget))
+            setFocused(false);
         }}
       >
         {slides.map((slide, index) => (

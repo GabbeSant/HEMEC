@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { equipmentService } from "../services/equipmentService";
+import { filterEquipment } from "../utils/filterEquipment";
 import "./EquipmentPage.css";
-
-const normalize = (value) =>
-  value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLocaleLowerCase("pt-BR");
 
 export default function EquipmentPage({ session, onLogout }) {
   const [equipment, setEquipment] = useState([]);
@@ -39,27 +34,20 @@ export default function EquipmentPage({ session, onLogout }) {
     };
   }, [attempt]);
 
-  const terms = normalize(query).trim().split(/\s+/).filter(Boolean);
-  const filtered = equipment.filter((item) => {
-    const text = normalize(
-      [
-        item.asset,
-        item.name,
-        item.serial,
-        item.brand,
-        item.model,
-        item.sector,
-      ].join(" "),
-    );
-    return (
-      (!status || item.status === status) &&
-      terms.every((term) => text.includes(term))
-    );
-  });
+  const filtered = filterEquipment(equipment, { query, status });
 
   return (
     <section className="equipment-page" aria-labelledby="equipment-title">
-      {session && <div className="session-controls"><span>{session.name} · {session.email}</span><button type="button" onClick={onLogout}>Sair</button></div>}
+      {session && (
+        <div className="session-controls">
+          <span>
+            {session.name} · {session.email}
+          </span>
+          <button type="button" onClick={onLogout}>
+            Sair
+          </button>
+        </div>
+      )}
       <a href="#inicio">Voltar ao início</a>
       <h1 id="equipment-title">Equipamentos</h1>
       <p className="equipment-intro">

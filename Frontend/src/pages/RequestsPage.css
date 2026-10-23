@@ -1,0 +1,172 @@
+.requests-page {
+  display: grid;
+  gap: 24px;
+  font-size: 13px;
+}
+.requests-page > a {
+  justify-self: start;
+  padding-block: 10px;
+  color: var(--blue);
+}
+.requests-page h1 {
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+.requests-page header p {
+  max-width: 65ch;
+  margin-top: 8px;
+  color: var(--muted);
+}
+.requests-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.requests-active-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  color: var(--muted);
+}
+.requests-active-filter a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--blue);
+}
+.request-form {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  max-width: 760px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.request-form label {
+  font-weight: 500;
+}
+.request-form :is(input, select, textarea) {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  background: #fff;
+  font: inherit;
+}
+.request-form textarea {
+  resize: vertical;
+}
+.request-form [aria-invalid="true"] {
+  border-color: var(--ink);
+  border-width: 2px;
+}
+.request-error {
+  padding-left: 12px;
+  border-left: 3px solid var(--ink);
+}
+.request-error:focus {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+}
+.request-save-status:empty {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.requests-page button {
+  justify-self: start;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--blue);
+  border-radius: 6px;
+  color: #fff;
+  background: var(--blue);
+  font: inherit;
+  cursor: pointer;
+}
+.requests-page button:disabled {
+  color: var(--muted);
+  background: var(--surface);
+  border-color: var(--line);
+  cursor: not-allowed;
+}
+.request-selection {
+  color: var(--muted);
+}
+.requests-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.requests-list li {
+  padding: 20px;
+  overflow-wrap: anywhere;
+}
+.requests-list li + li {
+  border-top: 1px solid var(--line);
+}
+.requests-list h2 {
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--blue);
+}
+.requests-list h3 {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.request-problem {
+  margin-top: 8px;
+  max-width: 65ch;
+  white-space: pre-wrap;
+}
+.requests-list dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 16px 0 0;
+}
+.requests-list dt {
+  font-size: 11px;
+  color: var(--muted);
+}
+.requests-list dd {
+  margin: 4px 0 0;
+}
+@media (max-width: 1100px) {
+  .requests-list dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  .requests-list dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .request-form {
+    padding: 16px;
+  }
+  .request-form :is(input, select, textarea) {
+    font-size: 16px;
+  }
+}
+@media (max-width: 575px) {
+  .requests-heading .button {
+    width: 100%;
+  }
+}

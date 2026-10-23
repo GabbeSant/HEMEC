@@ -3,12 +3,10 @@ import { equipmentService } from "../services/equipmentService";
 import { filterEquipment } from "../utils/filterEquipment";
 import "./EquipmentPage.css";
 
-export default function EquipmentPage({ session, onLogout }) {
+export default function EquipmentPage({ query = "", status = "", onFiltersChange }) {
   const [equipment, setEquipment] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [query, setQuery] = useState("");
-  const [status, setStatus] = useState("");
   const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
@@ -36,27 +34,20 @@ export default function EquipmentPage({ session, onLogout }) {
 
   const filtered = filterEquipment(equipment, { query, status });
 
+  function updateFilters(nextQuery, nextStatus) {
+    onFiltersChange(nextQuery, nextStatus);
+  }
+
   return (
     <section className="equipment-page" aria-labelledby="equipment-title">
-      {session && (
-        <div className="session-controls">
-          <span>
-            {session.name} · {session.email}
-          </span>
-          <button type="button" onClick={onLogout}>
-            Sair
-          </button>
+      <a className="equipment-back" href="#/dashboard">Voltar à dashboard</a>
+      <header className="equipment-heading">
+        <div>
+          <h1 id="equipment-title">Equipamentos</h1>
+          <p className="equipment-intro">Consulte o patrimônio, a localização e a situação operacional.</p>
         </div>
-      )}
-      <a href="#inicio">Voltar ao início</a>
-      <h1 id="equipment-title">Equipamentos</h1>
-      <p className="equipment-intro">
-        Consulte o patrimônio, a localização e a situação operacional.
-      </p>
-      <p className="equipment-demo">
-        Demonstração com dados fictícios. Esta etapa permite somente consulta,
-        sem salvar alterações ou conectar ao hospital.
-      </p>
+        <a className="button button-primary" href="#/chamados/novo">Novo chamado</a>
+      </header>
       <div
         className="equipment-filters"
         role="search"
@@ -68,7 +59,7 @@ export default function EquipmentPage({ session, onLogout }) {
             id="equipment-search"
             type="search"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => updateFilters(event.target.value, status)}
             placeholder="Patrimônio, nome, série, marca, modelo ou setor"
           />
         </label>
@@ -77,7 +68,7 @@ export default function EquipmentPage({ session, onLogout }) {
           <select
             id="equipment-status"
             value={status}
-            onChange={(event) => setStatus(event.target.value)}
+            onChange={(event) => updateFilters(query, event.target.value)}
           >
             <option value="">Todas as situações</option>
             <option>Disponível</option>
@@ -147,8 +138,7 @@ export default function EquipmentPage({ session, onLogout }) {
                 <button
                   type="button"
                   onClick={() => {
-                    setQuery("");
-                    setStatus("");
+                    updateFilters("", "");
                   }}
                 >
                   Limpar filtros

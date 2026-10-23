@@ -1,0 +1,172 @@
+.operational-shell {
+  display: grid;
+  grid-template-columns: 224px minmax(0, 1fr);
+  min-height: 100svh;
+  background: var(--surface);
+}
+.operational-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 20px;
+  background: #fff;
+  border-right: 1px solid var(--line);
+}
+.operational-caption {
+  max-width: 24ch;
+  color: var(--muted);
+  font-size: 12px;
+}
+.operational-sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.operational-menu-toggle {
+  display: none;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.operational-nav {
+  display: grid;
+  gap: 4px;
+  margin-top: 28px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.operational-nav > :is(a, span) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.operational-nav a[aria-current="page"],
+.operational-nav [aria-current="location"] {
+  background: var(--surface);
+  color: var(--blue);
+}
+.operational-nav a:hover {
+  text-decoration: underline;
+}
+.operational-nav > span {
+  color: var(--muted);
+}
+.operational-nav small {
+  font-size: 10px;
+  font-weight: 400;
+}
+.operational-sidebar-footer {
+  display: grid;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 32px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.operational-sidebar-footer a {
+  padding-block: 10px;
+}
+.operational-workspace {
+  min-width: 0;
+}
+.operational-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  min-height: 76px;
+  padding: 14px 32px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+}
+.operational-account {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.operational-account button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.operational-main {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 32px;
+  overflow-wrap: anywhere;
+}
+.operational-main:focus-visible {
+  outline-offset: -3px;
+}
+.operational-topbar > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.operational-shell button:not(:disabled):hover,
+.operational-menu-toggle[aria-expanded="true"] {
+  border-color: var(--blue);
+}
+.operational-shell :is(button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+@media (max-width: 767px) {
+  .operational-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .operational-sidebar {
+    padding: 12px 20px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .operational-caption,
+  .operational-sidebar-footer {
+    display: none;
+  }
+  .operational-nav {
+    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0;
+    font-size: 12px;
+  }
+  .operational-nav.is-open {
+    display: grid;
+  }
+  .operational-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+  .operational-topbar {
+    min-height: 0;
+    padding: 4px 20px;
+  }
+  .operational-main {
+    padding: 24px 20px;
+  }
+}

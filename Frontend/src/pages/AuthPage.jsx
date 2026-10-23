@@ -12,25 +12,21 @@ export default function AuthPage({ onLogin }) {
     const email = String(values.get("email")).trim();
     // Simulação sem credenciais persistidas ou requisição para uma API.
     form.reset();
-    onLogin({ name: "Usuário de demonstração", email });
+    onLogin({ name: "Usuário", email });
   }
 
   return (
-    <section
-      className="auth-page"
-      aria-labelledby="auth-title"
-    >
+    <section className="auth-page" aria-labelledby="auth-title">
       <div className="auth-image">
         <img
           src={hospitalImage}
           alt="Leitos e equipamentos em uma sala hospitalar"
         />
         <div className="auth-welcome">
-          <h2>
-            Boas-vindas ao HEMEC.
-          </h2>
+          <h2>Boas-vindas ao HEMEC.</h2>
           <p>
-            Equipamentos, chamados e atendimentos reunidos para apoiar a rotina de quem cuida.
+            Equipamentos, chamados e atendimentos reunidos para apoiar a rotina
+            de quem cuida.
           </p>
         </div>
       </div>
@@ -39,17 +35,11 @@ export default function AuthPage({ onLogin }) {
           <a href="#inicio" className="auth-back">
             Voltar ao início
           </a>
-          <h1 id="auth-title">
-            Entrar no HEMEC
-          </h1>
+          <h1 id="auth-title">Entrar no HEMEC</h1>
           <p className="auth-description">
-            Acesse a demonstração para consultar os equipamentos.
+            Acesse o HEMEC para acompanhar a manutenção dos equipamentos.
           </p>
-          <p className="auth-demo" id="auth-demo">
-            Acesso simulado. Use dados fictícios e uma senha de teste. Nenhuma
-            conta real será criada e sua senha não será salva.
-          </p>
-          <form onSubmit={submit} aria-describedby="auth-demo">
+          <form onSubmit={submit}>
             <div className="auth-field">
               <label htmlFor="auth-email">E-mail</label>
               <input
@@ -94,4 +84,3 @@ export default function AuthPage({ onLogin }) {
     </section>
   );
 }
-

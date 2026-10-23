@@ -78,16 +78,10 @@
   font-size: 14px;
   color: var(--muted);
 }
-.auth-demo {
-  margin-block: 20px;
-  padding: 14px 16px;
-  background: var(--surface);
-  border-radius: 6px;
-  font-size: 12px;
-}
 .auth-content form {
   display: grid;
   gap: 12px;
+  margin-top: 20px;
 }
 .auth-field {
   display: grid;

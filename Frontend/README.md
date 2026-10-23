@@ -1,5 +1,65 @@
 # HEMEC · Frontend
 
+## Retomar em outra sessão · 23/10/2026
+
+O código da dashboard está salvo no commit `02edab7`
+(`feat(frontend): implementa dashboard operacional e integra equipamentos, chamados e OS`).
+Ao solicitar o salvamento para trocar de sessão, o usuário já havia registrado esse
+commit; o diretório de trabalho estava limpo. Esta nota é um registro posterior de
+retomada. Não iniciar novas funcionalidades apenas com base nas etapas históricas abaixo.
+
+### Antes de continuar
+
+1. Ler integralmente `AGENTS.md`, `Skill.md` e esta seção; conferir o Git e os arquivos
+   reais. As instruções e preferências explícitas do usuário nesta sessão prevalecem.
+2. Trabalhar em `HEMEC/Frontend`, preservando os protótipos como referência. React,
+   Vite, JSX, CSS, fontes locais e tokens existentes permanecem como base.
+3. A dashboard e as seis etapas estão concluídas para avaliação do usuário. O usuário
+   autorizou finalizar as propostas de uma vez; não reiniciar etapas ou solicitar
+   validação dos blocos já entregues. A próxima tarefa depende do pedido que ele trouxer.
+4. Preservar a home/carrossel e as telas existentes. O usuário pediu remover os avisos
+   de demonstração da interface: não reintroduzi-los. Os limites técnicos continuam
+   documentados aqui; a remoção dos textos não implementou autenticação ou backend.
+5. Não fazer push, deploy ou novas alterações externas sem solicitação. O marco do
+   `AGENTS.md` é 23/10/2026; após essa data, confirmar o próximo objetivo antes de
+   reutilizar prazos. A prioridade atual é a avaliação da interface pelo usuário.
+
+### Estado funcional preservado
+
+- `#/dashboard`: quatro indicadores, busca, Novo chamado, Atualizar dados,
+  OS prioritárias com abertura e atividade recente dos chamados registrados.
+- Indicadores: Chamados abertos, OS em atendimento, OS de prioridade alta e
+  Equipamentos indisponíveis. Todos abrem listas filtradas. Não voltar ao rótulo
+  OS críticas nem equiparar prioridade à criticidade hospitalar.
+- `#/equipamentos`: integrado ao layout operacional e ao menu móvel; busca e
+  situação ficam na URL, com filtros combinados e limpeza sem perda de foco.
+- `#/chamados/novo` e `#/chamados`: registro local com solicitante da sessão,
+  confirmação, leitura, filtros, validações e preservação dos campos em falhas.
+- `#/ordens-servico` e `#/os/OS-0042` / `#/os/OS-0041`: lista, filtros e detalhes
+  somente para consulta. Datas e setores de abertura não são reescritos pelo inventário.
+- Chamado e OS continuam separados. Registrar chamado não cria/encerra OS nem
+  altera equipamento. Não há atendimentos ou regras de encerramento implementadas.
+
+### Limites e dados
+
+Login, equipamentos e OS usam serviços locais, sem API/autenticação real. A sessão
+fica na memória e some ao atualizar. Chamados usam a chave `hemec-requests-v1` no
+localStorage desta origem/navegador; não estão dentro do Git nem são transportados
+para outro navegador por um commit. Não limpar esses dados para testar sem preservar
+o conteúdo original. Os testes anteriores restauraram o armazenamento ao terminar.
+Critérios hospitalares, permissões, sincronização e contrato com o backend ainda
+precisam de definição; não presumir endpoints ou regras novas.
+
+### Executar e conferir
+
+Na pasta `HEMEC/Frontend`, usar `npm.cmd run dev` no PowerShell. Para produção,
+`npm.cmd run build`. Scripts de lint/testes não estão configurados no package.json.
+Último build aprovado. As verificações no Chrome headless cobriram navegação,
+persistência, filtros/recarga, teclado, menu móvel, erros, vazios, atualização e
+responsividade (320 a 1920 px e reflow equivalente a 200%). Os detalhes ficam na
+seção Dashboard finalizada para avaliação. Não há testes permanentes no repositório;
+scripts e capturas usados para verificação ficaram no diretório temporário.
+
 ## Dashboard finalizada para avaliação · 23/10/2026
 
 O usuário autorizou concluir as propostas em uma entrega completa, sem novas pausas

@@ -1,5 +1,29 @@
 # HEMEC · Frontend
 
+## Revisão visual da dashboard · 23/10/2026
+
+Revisão aplicada sobre a dashboard existente, preservando as alterações locais.
+Título, ações e busca agora compartilham uma superfície branca com borda azul;
+os indicadores continuam em uma faixa compacta, com números maiores e atalhos
+em toda a área. Requer atenção é o bloco principal, com cabeçalho azul forte e
+contagem total das OS de prioridade alta pendentes; a lista mantém até três itens.
+Identificação da OS, equipamento, problema, prioridade e situação têm pesos distintos.
+A sidebar usa seleção azul sólida, e o fundo azul-claro separa melhor as superfícies.
+
+Estilos adicionais ficam restritos ao layout operacional e à dashboard. Fontes
+locais, home/carrossel, regras dos indicadores, rotas e serviços foram preservados.
+Equipamentos, OS e login continuam locais; chamados continuam no localStorage.
+Nenhum gráfico, pacote, endpoint ou regra hospitalar foi acrescentado.
+
+Para conferir: executar `npm.cmd run dev`, abrir `#/dashboard` e testar busca,
+indicadores, Ver todas, abertura de OS e Menu no celular. Build aprovado e
+verificação no Chrome headless em 320, 390, 683, 768, 992, 1366 e 1920 px, sem
+rolagem horizontal. Conferidos teclado, foco, sessão, filtros, recarga da OS,
+atualização, atividade recente, carregamento, falhas independentes, recuperação e
+vazios. Contrastes de texto medidos acima de 4,5:1. Dados de teste ficaram apenas
+em um perfil temporário do Chrome, sem alterar os registros do navegador do usuário.
+Não houve teste com leitor de tela real. Nenhum commit, push ou deploy foi realizado.
+
 ## Retomar em outra sessão · 23/10/2026
 
 O código da dashboard está salvo no commit `02edab7`

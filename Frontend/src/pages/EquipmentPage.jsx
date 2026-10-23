@@ -3,7 +3,11 @@ import { equipmentService } from "../services/equipmentService";
 import { filterEquipment } from "../utils/filterEquipment";
 import "./EquipmentPage.css";
 
-export default function EquipmentPage({ query = "", status = "", onFiltersChange }) {
+export default function EquipmentPage({
+  query = "",
+  status = "",
+  onFiltersChange,
+}) {
   const [equipment, setEquipment] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -40,13 +44,19 @@ export default function EquipmentPage({ query = "", status = "", onFiltersChange
 
   return (
     <section className="equipment-page" aria-labelledby="equipment-title">
-      <a className="equipment-back" href="#/dashboard">Voltar à dashboard</a>
+      <a className="equipment-back" href="#/dashboard">
+        Voltar à dashboard
+      </a>
       <header className="equipment-heading">
         <div>
           <h1 id="equipment-title">Equipamentos</h1>
-          <p className="equipment-intro">Consulte o patrimônio, a localização e a situação operacional.</p>
+          <p className="equipment-intro">
+            Consulte o patrimônio, a localização e a situação operacional.
+          </p>
         </div>
-        <a className="button button-primary" href="#/chamados/novo">Novo chamado</a>
+        <a className="button button-primary" href="#/chamados/novo">
+          Novo chamado
+        </a>
       </header>
       <div
         className="equipment-filters"

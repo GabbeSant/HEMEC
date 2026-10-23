@@ -37,8 +37,15 @@
   gap: 8px 20px;
   color: var(--muted);
 }
-.work-orders-filters a { padding-block: 12px; color: var(--blue); }
-.work-orders-surface { background: #fff; border: 1px solid var(--line); border-radius: 6px; }
+.work-orders-filters a {
+  padding-block: 12px;
+  color: var(--blue);
+}
+.work-orders-surface {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
 .priority-order-description h3 {
   font-size: 14px;
   line-height: 1.4;
@@ -76,7 +83,9 @@
   font-size: 12px;
   font-weight: 500;
 }
-.work-order-priority.is-high { color: #9b2c2c; }
+.work-order-priority.is-high {
+  color: #9b2c2c;
+}
 .work-order-feedback {
   padding: 24px 20px;
   color: var(--muted);

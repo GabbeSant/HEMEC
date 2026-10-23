@@ -72,7 +72,12 @@ export default function OperationalLayout({
           >
             Chamados
           </a>
-          <a href="#/ordens-servico" aria-current={activePage === "orders" ? "page" : undefined}>Ordens de serviço</a>
+          <a
+            href="#/ordens-servico"
+            aria-current={activePage === "orders" ? "page" : undefined}
+          >
+            Ordens de serviço
+          </a>
         </nav>
         <div className="operational-sidebar-footer">
           <a href="#inicio">Página inicial</a>

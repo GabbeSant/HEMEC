@@ -2,10 +2,16 @@ import React from "react";
 import { useRequests } from "../hooks/useRequests";
 import "./RequestsPage.css";
 
-export default function RequestsPage({ createdId, statusFilter = "", idFilter = "" }) {
+export default function RequestsPage({
+  createdId,
+  statusFilter = "",
+  idFilter = "",
+}) {
   const { status, requests, retry } = useRequests();
-  const filtered = requests.filter((request) =>
-    (!statusFilter || request.status === statusFilter) && (!idFilter || request.id === idFilter),
+  const filtered = requests.filter(
+    (request) =>
+      (!statusFilter || request.status === statusFilter) &&
+      (!idFilter || request.id === idFilter),
   );
   return (
     <div className="requests-page">
@@ -18,7 +24,9 @@ export default function RequestsPage({ createdId, statusFilter = "", idFilter = 
       </header>
       {(statusFilter || idFilter) && (
         <div className="requests-active-filter">
-          <span>{idFilter ? "Chamado selecionado" : `Situação: ${statusFilter}`}</span>
+          <span>
+            {idFilter ? "Chamado selecionado" : `Situação: ${statusFilter}`}
+          </span>
           <a href="#/chamados">Limpar filtro</a>
         </div>
       )}

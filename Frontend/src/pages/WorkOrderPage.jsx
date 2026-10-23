@@ -49,7 +49,11 @@ export default function WorkOrderPage({ orderId }) {
               <div>
                 <dt>Prioridade</dt>
                 <dd>
-                  <span className={`work-order-priority${order.priority === "Alta" ? " is-high" : ""}`}>{order.priority}</span>
+                  <span
+                    className={`work-order-priority${order.priority === "Alta" ? " is-high" : ""}`}
+                  >
+                    {order.priority}
+                  </span>
                 </dd>
               </div>
               <div>

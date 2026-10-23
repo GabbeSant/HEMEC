@@ -1,7 +1,11 @@
 .operational-shell {
+  --surface: #e6eff8;
+  --line: #c2d3e4;
+  --operational-blue-strong: #123d8c;
   display: grid;
   grid-template-columns: 224px minmax(0, 1fr);
   min-height: 100svh;
+  border-top: 3px solid var(--blue);
   background: var(--surface);
 }
 .operational-sidebar {
@@ -12,9 +16,12 @@
   background: #fff;
   border-right: 1px solid var(--line);
 }
+.operational-sidebar .brand {
+  font-size: 32px;
+}
 .operational-caption {
   max-width: 24ch;
-  color: var(--muted);
+  color: var(--ink);
   font-size: 12px;
 }
 .operational-sidebar-heading {
@@ -55,11 +62,19 @@
 }
 .operational-nav a[aria-current="page"],
 .operational-nav [aria-current="location"] {
+  background: var(--blue);
+  color: #fff;
+  font-weight: 500;
+}
+.operational-nav a:not([aria-current]):hover {
   background: var(--surface);
   color: var(--blue);
 }
 .operational-nav a:hover {
   text-decoration: underline;
+}
+.operational-nav a[aria-current]:focus-visible {
+  outline-color: var(--operational-blue-strong);
 }
 .operational-nav > span {
   color: var(--muted);
@@ -70,9 +85,9 @@
 }
 .operational-sidebar-footer {
   display: grid;
-  gap: 12px;
+  gap: 8px;
   margin-top: auto;
-  padding-top: 32px;
+  padding-top: 20px;
   font-size: 11px;
   color: var(--muted);
 }
@@ -88,8 +103,8 @@
   justify-content: flex-end;
   flex-wrap: wrap;
   gap: 12px 24px;
-  min-height: 76px;
-  padding: 14px 32px;
+  min-height: 56px;
+  padding: 6px 32px;
   background: #fff;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
@@ -117,7 +132,7 @@
   width: 100%;
   max-width: 1440px;
   margin-inline: auto;
-  padding: 32px;
+  padding: 28px 32px;
   overflow-wrap: anywhere;
 }
 .operational-main:focus-visible {

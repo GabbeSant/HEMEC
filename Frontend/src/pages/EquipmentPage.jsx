@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { equipmentService } from "../services/equipmentService";
+import React from "react";
+import { useEquipment } from "../hooks/useEquipment";
 import { filterEquipment } from "../utils/filterEquipment";
 import "./EquipmentPage.css";
 
@@ -8,33 +8,7 @@ export default function EquipmentPage({
   status = "",
   onFiltersChange,
 }) {
-  const [equipment, setEquipment] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [attempt, setAttempt] = useState(0);
-
-  useEffect(() => {
-    let cancelled = false;
-    setLoading(true);
-    setError("");
-    equipmentService
-      .list()
-      .then((data) => {
-        if (!cancelled) setEquipment(data);
-      })
-      .catch(() => {
-        if (!cancelled)
-          setError(
-            "Não foi possível carregar os equipamentos. Tente novamente.",
-          );
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [attempt]);
+  const { equipment, status: loadStatus, retry } = useEquipment();
 
   const filtered = filterEquipment(equipment, { query, status });
 
@@ -87,14 +61,14 @@ export default function EquipmentPage({
           </select>
         </label>
       </div>
-      {loading ? (
+      {loadStatus === "loading" ? (
         <p role="status">Carregando equipamentos…</p>
-      ) : error ? (
+      ) : loadStatus === "error" ? (
         <div role="alert">
-          <p>{error}</p>
+          <p>Não foi possível carregar os equipamentos. Tente novamente.</p>
           <button
             type="button"
-            onClick={() => setAttempt((current) => current + 1)}
+            onClick={retry}
           >
             Tentar novamente
           </button>
@@ -110,7 +84,7 @@ export default function EquipmentPage({
                 <li key={item.id} className="equipment-item">
                   <div className="equipment-identity">
                     <span>{item.asset}</span>
-                    <h2>{item.name}</h2>
+                    <h2><a href={`#/equipamentos/${encodeURIComponent(item.id)}`}>{item.name}</a></h2>
                     <p>
                       {item.brand} / {item.model}
                     </p>
@@ -129,6 +103,10 @@ export default function EquipmentPage({
                       <dd>{item.status}</dd>
                     </div>
                   </dl>
+                  <div className="equipment-actions">
+                    <a href={`#/equipamentos/${encodeURIComponent(item.id)}`}>Ver ficha e histórico<span className="visually-hidden"> de {item.asset}</span></a>
+                    <a href={`#/chamados/novo?equipamento=${encodeURIComponent(item.id)}`}>Abrir chamado<span className="visually-hidden"> para {item.asset}</span></a>
+                  </div>
                 </li>
               ))}
             </ul>

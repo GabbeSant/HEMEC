@@ -9,6 +9,17 @@ import WorkOrderPage from "./pages/WorkOrderPage";
 import NewRequestPage from "./pages/NewRequestPage";
 import RequestsPage from "./pages/RequestsPage";
 import WorkOrdersPage from "./pages/WorkOrdersPage";
+import EquipmentDetailPage from "./pages/EquipmentDetailPage";
+import RequestDetailPage from "./pages/RequestDetailPage";
+
+function routeId(route, prefix) {
+  if (!route.startsWith(prefix)) return null;
+  try {
+    return decodeURIComponent(route.slice(prefix.length));
+  } catch {
+    return "";
+  }
+}
 
 // A rota no hash permite atualizar a demonstração sem configuração de servidor.
 export default function App() {
@@ -39,13 +50,24 @@ export default function App() {
     priority: new URLSearchParams(search).get("prioridade") === "Alta" ? "Alta" : "",
     pending: new URLSearchParams(search).get("pendentes") === "1",
   };
-  const login = hash === "#/login";
-  const dashboard = hash === "#/dashboard";
-  const newRequest = hash === "#/chamados/novo";
+  const login = route === "#/login";
+  const dashboard = route === "#/dashboard";
+  const newRequest = route === "#/chamados/novo";
+  const initialEquipmentId = new URLSearchParams(search).get("equipamento") ?? "";
+  const equipmentId = routeId(route, "#/equipamentos/");
+  const requestDetailId = newRequest ? null : routeId(route, "#/chamados/");
+  // O retorno do login aceita somente o fluxo local de abertura de chamado.
+  const returnParam = new URLSearchParams(search).get("retorno") ?? "";
+  const loginReturn = returnParam.split("?")[0] === "#/chamados/novo"
+    ? returnParam : "#/dashboard";
   const requests = route === "#/chamados";
-  const orderId = hash.startsWith("#/os/") ? hash.slice(5) : null;
+  const orderId = routeId(route, "#/os/");
   useEffect(() => {
-    document.title = newRequest
+    document.title = equipmentId !== null
+      ? "Ficha do equipamento | HEMEC"
+      : requestDetailId !== null
+      ? "Detalhes do chamado | HEMEC"
+      : newRequest
       ? "Novo chamado | HEMEC"
       : requests
       ? "Chamados | HEMEC"
@@ -60,13 +82,13 @@ export default function App() {
       : login
         ? "Entrar | HEMEC"
         : "HEMEC";
-    if (inventory || login || dashboard || newRequest || requests || orders || orderId !== null) {
+    if (inventory || equipmentId !== null || requestDetailId !== null || login || dashboard || newRequest || requests || orders || orderId !== null) {
       window.scrollTo(0, 0);
       document.getElementById("conteudo")?.focus({ preventScroll: true });
     } else if (route) {
       document.getElementById(route.slice(1))?.scrollIntoView();
     }
-  }, [inventory, login, dashboard, newRequest, requests, orders, orderId, route]);
+  }, [inventory, equipmentId, requestDetailId, login, dashboard, newRequest, requests, orders, orderId, route]);
 
   function updateEquipmentFilters(query, status) {
     const params = new URLSearchParams();
@@ -84,13 +106,22 @@ export default function App() {
     window.location.hash = "#/login";
   }
 
-  if (dashboard || inventory || newRequest || requests || orders || orderId !== null) {
+  if (dashboard || inventory || equipmentId !== null || requestDetailId !== null || newRequest || requests || orders || orderId !== null) {
     return (
-      <OperationalLayout session={session} onLogout={logout} activePage={dashboard ? "dashboard" : inventory ? "equipment" : newRequest || requests ? "requests" : "orders"}>
-        {dashboard ? <DashboardPage /> : inventory ? (
+      <OperationalLayout
+        session={session}
+        onLogout={logout}
+        loginHref={newRequest ? `#/login?retorno=${encodeURIComponent(hash)}` : "#/login"}
+        activePage={dashboard ? "dashboard" : inventory || equipmentId !== null ? "equipment" : newRequest || requests || requestDetailId !== null ? "requests" : "orders"}
+      >
+        {dashboard ? <DashboardPage /> : equipmentId !== null ? (
+          <EquipmentDetailPage key={equipmentId} equipmentId={equipmentId} />
+        ) : requestDetailId !== null ? (
+          <RequestDetailPage key={requestDetailId} requestId={requestDetailId} />
+        ) : inventory ? (
           <EquipmentPage query={inventoryQuery} status={inventoryStatus} onFiltersChange={updateEquipmentFilters} />
         ) : newRequest ? (
-          <NewRequestPage session={session} onCreated={(id) => {
+          <NewRequestPage key={initialEquipmentId} initialEquipmentId={initialEquipmentId} session={session} onCreated={(id) => {
             setCreatedRequestId(id);
             window.location.hash = "#/chamados";
           }} />
@@ -108,7 +139,7 @@ export default function App() {
         <AuthPage
           onLogin={(user) => {
             setSession(user);
-            window.location.hash = "#/dashboard";
+            window.location.hash = loginReturn;
           }}
         />
       ) : (

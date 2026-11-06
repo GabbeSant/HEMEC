@@ -7,7 +7,7 @@ function readRequests() {
   if (saved === null) return [];
   const payload = JSON.parse(saved);
   if (
-    payload.version !== 1 ||
+    payload?.version !== 1 ||
     !Array.isArray(payload.requests) ||
     !payload.requests.every(
       (item) =>
@@ -39,8 +39,10 @@ export const requestService = {
     return readRequests();
   },
   async create({ equipmentId, description, requester }) {
-    if (!description?.trim()) throw new Error("Descreva o problema relatado.");
-    if (!requester?.email || !requester?.name)
+    if (typeof description !== "string" || !description.trim())
+      throw new Error("Descreva o problema relatado.");
+    if (typeof requester?.email !== "string" || !requester.email.trim() ||
+        typeof requester?.name !== "string" || !requester.name.trim())
       throw new Error("Entre no sistema para registrar o chamado.");
     const equipment = (await equipmentService.list()).find(
       (item) => item.id === equipmentId,

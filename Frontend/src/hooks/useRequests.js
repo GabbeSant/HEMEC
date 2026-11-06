@@ -10,6 +10,7 @@ export function useRequests() {
     requestService
       .list()
       .then((requests) => {
+        if (!Array.isArray(requests)) throw new Error("Lista de chamados inválida");
         if (!cancelled) setResult({ status: "success", requests });
       })
       .catch(() => {

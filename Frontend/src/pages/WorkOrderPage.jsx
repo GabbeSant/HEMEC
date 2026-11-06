@@ -1,6 +1,7 @@
 import React from "react";
 import { useWorkOrders } from "../hooks/useWorkOrders";
 import { formatDateOnly } from "../utils/formatDateOnly";
+import WorkOrderAttendances from "../components/work-orders/WorkOrderAttendances";
 import "../components/work-orders/WorkOrders.css";
 
 export default function WorkOrderPage({ orderId }) {
@@ -34,7 +35,7 @@ export default function WorkOrderPage({ orderId }) {
         <>
           <header>
             <h1>{order.id}</h1>
-            <p>Consulta da ordem de serviço.</p>
+            <p>Consulte a ordem de serviço e registre os atendimentos técnicos.</p>
           </header>
           <section
             className="work-order-section"
@@ -102,6 +103,11 @@ export default function WorkOrderPage({ orderId }) {
             ) : (
               <p>Equipamento não localizado no inventário atual.</p>
             )}
+            {equipment && (
+              <a className="work-order-equipment-link" href={`#/equipamentos/${encodeURIComponent(equipment.id)}`}>
+                Ver ficha e histórico do equipamento
+              </a>
+            )}
           </section>
           <section
             className="work-order-section"
@@ -110,6 +116,7 @@ export default function WorkOrderPage({ orderId }) {
             <h2 id="work-order-problem-title">Problema relatado</h2>
             <p>{order.description}</p>
           </section>
+          <WorkOrderAttendances order={order} />
         </>
       )}
     </div>

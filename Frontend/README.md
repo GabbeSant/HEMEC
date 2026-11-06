@@ -1,5 +1,25 @@
 # HEMEC · Frontend
 
+## Continuidade operacional · 05/11/2026
+
+O inventário agora abre a ficha `#/equipamentos/eq-002`, com identificação completa,
+chamados locais e OS do equipamento. **Abrir chamado** na ficha ou na lista reutiliza
+`#/chamados/novo?equipamento=eq-002`, preservando a seleção inclusive após o login
+demonstrativo. A entrada global continua permitindo buscar e selecionar o equipamento.
+Cada chamado possui detalhes em `#/chamados/<id>`; a confirmação oferece acesso direto.
+
+Os registros permanecem em `hemec-requests-v1`, sem migração ou API. Conforme o pedido
+atual, formulário, confirmação e detalhes explicam o armazenamento local. Home,
+carrossel, composição da dashboard, identidade visual e separação chamado/OS foram
+preservados. A OS agora permite registrar vários atendimentos COI/COE, com empresa
+obrigatória em COE e soma dos minutos trabalhados. Esses registros ficam separados
+em `hemec-attendances-v1`; não encerram a OS nem alteram o equipamento.
+Diagnóstico, arquivos, validação e próximas prioridades estão em
+[PROGRESSO_CODEX.md](../PROGRESSO_CODEX.md).
+
+As seções datadas abaixo registram entregas anteriores; o código e a seção atual
+prevalecem sobre descrições históricas de funcionalidades ainda ausentes.
+
 ## Revisão visual da dashboard · 23/10/2026
 
 Revisão aplicada sobre a dashboard existente, preservando as alterações locais.

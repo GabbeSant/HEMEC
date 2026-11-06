@@ -1,15 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { equipmentService } from "../services/equipmentService";
+import { useEquipment } from "../hooks/useEquipment";
 import { requestService } from "../services/requestService";
 import { filterEquipment } from "../utils/filterEquipment";
 import "./RequestsPage.css";
 
-export default function NewRequestPage({ session, onCreated }) {
-  const [equipment, setEquipment] = useState([]);
-  const [status, setStatus] = useState("loading");
-  const [attempt, setAttempt] = useState(0);
+export default function NewRequestPage({ session, onCreated, initialEquipmentId = "" }) {
+  const { equipment, status, retry } = useEquipment();
   const [query, setQuery] = useState("");
-  const [equipmentId, setEquipmentId] = useState("");
+  const [equipmentId, setEquipmentId] = useState(initialEquipmentId);
   const [description, setDescription] = useState("");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -27,25 +25,6 @@ export default function NewRequestPage({ session, onCreated }) {
   useEffect(() => {
     if (error) saveError.current?.focus();
   }, [error]);
-
-  useEffect(() => {
-    let cancelled = false;
-    setStatus("loading");
-    equipmentService
-      .list()
-      .then((items) => {
-        if (!cancelled) {
-          setEquipment(items);
-          setStatus("success");
-        }
-      })
-      .catch(() => {
-        if (!cancelled) setStatus("error");
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [attempt]);
 
   async function submit(event) {
     event.preventDefault();
@@ -78,10 +57,10 @@ export default function NewRequestPage({ session, onCreated }) {
   const selected = equipment.find((item) => item.id === equipmentId);
   const filtered = filterEquipment(equipment, { query });
   // A seleção continua identificada mesmo quando o usuário refina a busca.
-  const options =
-    selected && !filtered.some((item) => item.id === selected.id)
-      ? [selected, ...filtered]
-      : filtered;
+  const visible = filtered.slice(0, 8);
+  const options = selected && !visible.some((item) => item.id === selected.id)
+    ? [selected, ...visible] : visible;
+  const returnRoute = `#/chamados/novo${initialEquipmentId ? `?equipamento=${encodeURIComponent(initialEquipmentId)}` : ""}`;
 
   return (
     <div className="requests-page">
@@ -90,10 +69,14 @@ export default function NewRequestPage({ session, onCreated }) {
         <h1>Novo chamado</h1>
         <p>Identifique o equipamento e descreva o problema observado.</p>
       </header>
+      <p className="request-local-note">
+        Demonstração local: o chamado fica salvo apenas neste navegador, sem envio ao hospital.
+        Use dados fictícios. O login e o solicitante são demonstrativos.
+      </p>
       {!session ? (
         <p>
           Entre no sistema para registrar o chamado.{" "}
-          <a href="#/login">Entrar</a>
+          <a href={`#/login?retorno=${encodeURIComponent(returnRoute)}`}>Entrar</a>
         </p>
       ) : (
         <form className="request-form" onSubmit={submit} aria-busy={saving}>
@@ -105,7 +88,7 @@ export default function NewRequestPage({ session, onCreated }) {
               <p role="alert">Não foi possível carregar os equipamentos.</p>
               <button
                 type="button"
-                onClick={() => setAttempt((value) => value + 1)}
+                onClick={retry}
               >
                 Tentar novamente
               </button>
@@ -122,8 +105,18 @@ export default function NewRequestPage({ session, onCreated }) {
                 type="search"
                 placeholder="Patrimônio, nome, série ou setor"
                 value={query}
+                disabled={saving}
+                aria-describedby="request-search-help"
                 onChange={(event) => setQuery(event.target.value)}
               />
+              <p id="request-search-help" className="request-selection" role="status">
+                {filtered.length > 8
+                  ? `${filtered.length} resultados. Exibindo os primeiros 8; refine a busca por patrimônio ou série.`
+                  : `${filtered.length} equipamentos encontrados.`}
+              </p>
+              {initialEquipmentId && !equipment.some((item) => item.id === initialEquipmentId) && (
+                <p role="status">O equipamento indicado no link não foi encontrado. Selecione outro equipamento.</p>
+              )}
               <label htmlFor="request-equipment">Equipamento</label>
               <select
                 id="request-equipment"
@@ -131,7 +124,7 @@ export default function NewRequestPage({ session, onCreated }) {
                   selected ? "request-equipment-selection" : undefined
                 }
                 required
-                value={equipmentId}
+                value={selected ? equipmentId : ""}
                 onChange={(event) => setEquipmentId(event.target.value)}
                 disabled={saving}
               >
@@ -194,12 +187,15 @@ export default function NewRequestPage({ session, onCreated }) {
           <p className="request-save-status" role="status">
             {saving ? "Registrando chamado…" : ""}
           </p>
-          <button
-            type="submit"
-            disabled={saving || status !== "success" || equipment.length === 0}
-          >
-            {saving ? "Salvando chamado…" : "Registrar chamado"}
-          </button>
+          <div className="request-actions">
+            <button
+              type="submit"
+              disabled={saving || status !== "success" || equipment.length === 0}
+            >
+              {saving ? "Salvando chamado…" : "Registrar chamado"}
+            </button>
+            {!saving && <a href={selected ? `#/equipamentos/${encodeURIComponent(selected.id)}` : "#/chamados"}>Cancelar</a>}
+          </div>
         </form>
       )}
     </div>

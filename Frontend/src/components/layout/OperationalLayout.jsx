@@ -6,6 +6,7 @@ export default function OperationalLayout({
   session,
   onLogout,
   activePage = "dashboard",
+  loginHref = "#/login",
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButton = useRef(null);
@@ -94,7 +95,7 @@ export default function OperationalLayout({
               </button>
             </div>
           ) : (
-            <a href="#/login">Entrar</a>
+            <a href={loginHref}>Entrar</a>
           )}
         </header>
         <main id="conteudo" className="operational-main" tabIndex={-1}>

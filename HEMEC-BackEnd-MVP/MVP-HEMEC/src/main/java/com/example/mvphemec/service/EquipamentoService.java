@@ -6,20 +6,26 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Objects;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class EquipamentoService {
 
     private final List<Equipamento> equipamentos = new ArrayList<>();
 
-    private Long proximoId = 1L;
-
     public Equipamento cadastrarEquipamento(Equipamento equipamento) {
-
-        equipamento.setId(proximoId++);
-
+        boolean idJaExiste = equipamentos.stream()
+                .anyMatch(item -> Objects.equals(equipamento.getId(), item.getId()));
+        boolean patrimonioJaExiste = equipamentos.stream()
+                .anyMatch(item -> Objects.equals(equipamento.getNumeroPatrimonial(), item.getNumeroPatrimonial()));
+        if (idJaExiste || patrimonioJaExiste) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    idJaExiste ? "ID de equipamento já cadastrado" : "Número patrimonial já cadastrado");
+        }
         equipamentos.add(equipamento);
-
         return equipamento;
     }
 
@@ -27,10 +33,9 @@ public class EquipamentoService {
         return new ArrayList<>(equipamentos);
     }
 
-    public Equipamento buscarPorId(Long id) {
+    public Optional<Equipamento> buscarPorId(Integer id) {
         return equipamentos.stream()
-                .filter(equipamento -> equipamento.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+                .filter(equipamento -> id.equals(equipamento.getId()))
+                .findFirst();
     }
 }

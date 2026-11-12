@@ -1,63 +1,55 @@
 package com.example.mvphemec.model;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "equipamentos")
+@Table(name = "EQUIPAMENTO")
 public class Equipamento {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_equipamento")
+    private Integer id;
 
     @NotBlank(message = "Informe o número patrimonial")
-    @Column(nullable = false, unique = true)
+    @Column(name = "num_patrimonio", nullable = false, unique = true, length = 50)
     private String numeroPatrimonial;
 
-    @NotBlank(message = "Informe o número de série")
-    @Column(nullable = false)
-    private String numSerie;
-
-    @NotBlank(message = "Informe o tipo do equipamento")
-    @Column(nullable = false)
-    private String tipoEquipamento;
-
     @NotBlank(message = "Informe o modelo")
-    @Column(nullable = false)
+    @Column(name = "modelo", nullable = false, length = 100)
     private String modelo;
 
-    @NotNull(message = "Informe a criticidade")
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Criticidade criticidade;
+    @NotNull(message = "Informe o status atual")
+    @Convert(converter = StatusEquipamentoConverter.class)
+    @Column(name = "status_atual", nullable = false, length = 20)
+    private StatusEquipamento statusAtual;
 
-    @NotNull(message = "Informe o setor")
-    // O relacionamento JPA com Setor será definido
-    // quando conferirmos a classe Setor.
-    @Transient
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_setor")
     private Setor setor;
 
-    @NotNull(message = "Informe o fabricante")
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_tipo")
+    private TipoEquipamento tipoEquipamento;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_fabricante")
     private Fabricante fabricante;
 
-    @NotNull(message = "Informe o valor de aquisição")
-    @PositiveOrZero(message = "O valor não pode ser negativo")
-    @Column(nullable = false, precision = 12, scale = 2)
-    private BigDecimal valorAquisicao;
-
-    @NotNull(message = "Informe a data de aquisição")
-    private LocalDate dataAquisicao;
-
-    public Equipamento() {
-    }
+    @NotNull(message = "Informe a criticidade")
+    @Convert(converter = CriticidadeConverter.class)
+    @Column(name = "criticidade", nullable = false, length = 1)
+    private Criticidade criticidade;
 }

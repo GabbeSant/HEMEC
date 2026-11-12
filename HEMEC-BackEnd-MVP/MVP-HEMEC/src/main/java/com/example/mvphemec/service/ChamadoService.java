@@ -6,71 +6,53 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+import java.time.LocalDateTime;
 import com.example.mvphemec.model.Equipamento;
+import com.example.mvphemec.model.StatusChamado;
+import com.example.mvphemec.model.Usuario;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class ChamadoService {
 
-    private final OrdemServicoService ordemServicoService;
-
     private final EquipamentoService equipamentoService;
 
     private final List<Chamado> chamados = new ArrayList<>();
 
-    private Long proximoIdChamado = 1L;
-
     public ChamadoService(
-            OrdemServicoService ordemServicoService,
             EquipamentoService equipamentoService) {
-
-        this.ordemServicoService = ordemServicoService;
         this.equipamentoService = equipamentoService;
     }
 
     public Chamado abrirChamado(
+            Integer chamadoId,
             String descricao,
-            Long equipamentoId,
-            Long abertoPor) {
+            Integer equipamentoId,
+            Integer abertoPor) {
+        Equipamento equipamento = equipamentoService.buscarPorId(equipamentoId).orElse(null);
+        if (equipamento == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Equipamento não encontrado");
+        }
+        if (chamados.stream().anyMatch(item -> chamadoId.equals(item.getId()))) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "ID de chamado já cadastrado");
+        }
 
-        Chamado chamado = new Chamado(
-                descricao,
-                equipamentoId,
-                abertoPor
-        );
+        Usuario usuario = new Usuario();
+        usuario.setId(abertoPor);
 
-        chamado.setId(proximoIdChamado++);
-        chamado.setCodigo(gerarCodigoUnico());
+        Chamado chamado = new Chamado();
+        chamado.setId(chamadoId);
+        chamado.setDescricaoProblema(descricao);
+        chamado.setDataAbertura(LocalDateTime.now());
+        chamado.setStatus(StatusChamado.ABERTO);
+        chamado.setUsuario(usuario);
+        chamado.setEquipamento(equipamento);
         chamados.add(chamado);
-
-        ordemServicoService.criarOrdemServico(
-                descricao,
-                equipamentoId,
-                chamado.getId()
-        );
-
         return chamado;
     }
 
     public List<Chamado> listarChamados() {
         return new ArrayList<>(chamados);
-    }
-
-    private String gerarCodigoUnico() {
-        while (true) {
-            final String codigo = String.format(
-                    "%06d",
-                    ThreadLocalRandom.current().nextInt(1_000_000)
-            );
-
-            boolean existe = chamados.stream()
-                    .anyMatch(chamado -> codigo.equals(chamado.getCodigo()));
-
-            if (!existe) {
-                return codigo;
-            }
-        }
     }
 }
